@@ -43,7 +43,8 @@ body {
   padding-bottom: var(--safe-bottom);
 }
 
-.screen { display: none; height: 100vh; flex-direction: column; }
+.screen { display: none; height: 100dvh; height: 100vh; flex-direction: column; }
+@supports (height: 100dvh) { .screen { height: 100dvh; } }
 .screen.active { display: flex; }
 
 /* ─── Header ─── */
@@ -213,6 +214,13 @@ body {
   font-size: 13px; color: var(--text-dim); margin-top: 4px;
 }
 
+.workout-elapsed {
+  display: flex; gap: 16px; margin-top: 12px;
+  font-size: 13px; color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+.workout-elapsed span { white-space: nowrap; }
+
 .workout-next {
   flex-shrink: 0; background: var(--surface);
   padding: 12px 16px; display: flex; align-items: center; gap: 12px;
@@ -224,7 +232,7 @@ body {
 
 .workout-controls {
   flex-shrink: 0; display: flex; gap: 10px;
-  padding: 12px 16px; padding-bottom: calc(12px + var(--safe-bottom));
+  padding: 12px 16px; padding-bottom: calc(24px + var(--safe-bottom));
 }
 .workout-controls .btn { flex: 1; }
 
@@ -319,6 +327,10 @@ COOLDOWN: 3:00 | Easy | ~12:00/mile | Cool down"></textarea>
     <div class="workout-pace" id="w-pace"></div>
     <div class="workout-cue" id="w-cue"></div>
     <div class="workout-progress" id="w-progress"></div>
+    <div class="workout-elapsed" id="w-elapsed">
+      <span id="w-elapsed-time">Elapsed: 0:00</span>
+      <span id="w-remaining-time">Remaining: 0:00</span>
+    </div>
   </div>
   <div class="workout-next" id="w-next">
     <div>
@@ -539,8 +551,11 @@ let workoutStartTime = 0;
 let paused = false;
 let pauseTime = 0;
 let totalPauseMs = 0;
+let globalPauseMs = 0;
 let tickInterval = null;
 let cueFired = {};
+let totalWorkoutDuration = 0;
+let completedBlocksDuration = 0;
 
 function now() { return Date.now(); }
 
@@ -584,15 +599,20 @@ function tick() {
     return;
   }
 
+  const workoutElapsed = completedBlocksDuration + elapsed;
+
   self.postMessage({
     type: 'tick',
     remaining: remaining,
     blockIdx: currentBlockIdx,
     totalBlocks: blocks.length,
+    workoutElapsed: workoutElapsed,
+    workoutRemaining: totalWorkoutDuration - workoutElapsed,
   });
 }
 
 function advanceBlock() {
+  completedBlocksDuration += blocks[currentBlockIdx].duration;
   currentBlockIdx++;
   totalPauseMs = 0;
 
@@ -608,6 +628,8 @@ function advanceBlock() {
     type: 'block-start',
     blockIdx: currentBlockIdx,
     remaining: blocks[currentBlockIdx].duration,
+    workoutElapsed: completedBlocksDuration,
+    workoutRemaining: totalWorkoutDuration - completedBlocksDuration,
   });
 }
 
@@ -620,13 +642,18 @@ self.onmessage = function(e) {
     workoutStartTime = now();
     blockStartTime = now();
     totalPauseMs = 0;
+    globalPauseMs = 0;
     paused = false;
     cueFired = {};
+    completedBlocksDuration = 0;
+    totalWorkoutDuration = blocks.reduce(function(s, b) { return s + b.duration; }, 0);
 
     self.postMessage({
       type: 'block-start',
       blockIdx: 0,
       remaining: blocks[0].duration,
+      workoutElapsed: 0,
+      workoutRemaining: totalWorkoutDuration,
     });
 
     tickInterval = setInterval(tick, 200);
@@ -656,11 +683,15 @@ self.onmessage = function(e) {
   if (msg.type === 'sync') {
     // Force sync request - respond with current state
     if (currentBlockIdx < blocks.length) {
+      var elapsed = getElapsedInBlock();
+      var wElapsed = completedBlocksDuration + elapsed;
       self.postMessage({
         type: 'tick',
         remaining: getRemainingInBlock(),
         blockIdx: currentBlockIdx,
         totalBlocks: blocks.length,
+        workoutElapsed: wElapsed,
+        workoutRemaining: totalWorkoutDuration - wElapsed,
       });
     }
   }
@@ -701,6 +732,8 @@ const $wTimer = document.getElementById('w-timer');
 const $wPace = document.getElementById('w-pace');
 const $wCue = document.getElementById('w-cue');
 const $wProgress = document.getElementById('w-progress');
+const $wElapsedTime = document.getElementById('w-elapsed-time');
+const $wRemainingTime = document.getElementById('w-remaining-time');
 const $wNext = document.getElementById('w-next');
 const $wNextInfo = document.getElementById('w-next-info');
 const $wNextDur = document.getElementById('w-next-dur');
@@ -1002,11 +1035,13 @@ function startWorkout() {
     if (msg.type === 'tick') {
       activeBlockIdx = msg.blockIdx;
       updateWorkoutUI(msg.blockIdx, msg.remaining);
+      updateElapsedUI(msg.workoutElapsed, msg.workoutRemaining);
     }
 
     if (msg.type === 'block-start') {
       activeBlockIdx = msg.blockIdx;
       updateWorkoutUI(msg.blockIdx, msg.remaining);
+      updateElapsedUI(msg.workoutElapsed, msg.workoutRemaining);
       announceBlock(msg.blockIdx);
     }
 
@@ -1068,6 +1103,11 @@ function updateWorkoutUI(blockIdx, remaining) {
     $wNextInfo.textContent = 'Finish';
     $wNextDur.textContent = '';
   }
+}
+
+function updateElapsedUI(elapsed, remaining) {
+  $wElapsedTime.textContent = 'Elapsed: ' + fmtDuration(Math.floor(elapsed));
+  $wRemainingTime.textContent = 'Remaining: ' + fmtDuration(Math.ceil(Math.max(0, remaining)));
 }
 
 function workoutComplete() {
