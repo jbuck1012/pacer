@@ -133,6 +133,44 @@ body {
   text-align: center; padding: 30px 0; color: var(--text-dim); font-size: 14px;
 }
 
+/* ─── Section labels ─── */
+.section-label {
+  font-size: 14px; color: var(--text-dim); margin-bottom: 10px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* ─── Repo workouts ─── */
+.repo-section { margin-bottom: 20px; }
+.repo-loading { font-size: 14px; color: var(--text-dim); padding: 12px 0; }
+.repo-list { display: flex; flex-direction: column; gap: 8px; }
+
+.repo-item {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--surface); border-radius: 10px; padding: 14px;
+  cursor: pointer; border-left: 4px solid var(--amber);
+}
+.repo-item:active { background: var(--surface2); }
+.repo-item-name { font-size: 15px; font-weight: 600; }
+.repo-item-desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+.repo-item-arrow { color: var(--text-dim); font-size: 18px; margin-left: 12px; }
+
+.repo-empty {
+  font-size: 14px; color: var(--text-dim); padding: 12px 0;
+}
+
+/* ─── Custom workout toggle ─── */
+.custom-section { margin-bottom: 20px; }
+.section-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; background: none; border: none; color: inherit;
+  cursor: pointer; padding: 0;
+}
+.toggle-arrow {
+  color: var(--text-dim); font-size: 14px;
+  transition: transform 0.2s;
+}
+.toggle-arrow.open { transform: rotate(180deg); }
+
 /* ═══════════════════════════════════════
    PREVIEW SCREEN
    ═══════════════════════════════════════ */
@@ -272,7 +310,21 @@ body {
     <h1>PACER</h1>
   </div>
   <div class="body">
-    <textarea id="workout-input" placeholder="WORKOUT: My Workout
+    <!-- Repo workouts section -->
+    <div class="repo-section" id="repo-section">
+      <h2 class="section-label">Today's Workout</h2>
+      <div id="repo-loading" class="repo-loading">Loading workouts...</div>
+      <div id="repo-list" class="repo-list"></div>
+    </div>
+
+    <!-- Custom workout section (collapsible) -->
+    <div class="custom-section">
+      <button class="section-toggle" id="custom-toggle">
+        <h2 class="section-label">Paste a Workout</h2>
+        <span class="toggle-arrow" id="toggle-arrow">&#9662;</span>
+      </button>
+      <div class="custom-body" id="custom-body" style="display:none;">
+        <textarea id="workout-input" placeholder="WORKOUT: My Workout
 THRESHOLD: 9:30/mile
 
 WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
@@ -280,17 +332,19 @@ PUSH: 2:00 | Push | ~9:30/mile | Hard effort
 RECOVERY: 1:00 | Recovery | ~11:30/mile | Recover
 REPEAT: 3
 COOLDOWN: 3:00 | Easy | ~12:00/mile | Cool down"></textarea>
-    <div class="parse-error" id="parse-error"></div>
-    <div class="load-actions">
-      <div class="btn btn-secondary upload-wrapper">
-        Upload File
-        <input type="file" id="file-input" accept=".txt,.md">
+        <div class="parse-error" id="parse-error"></div>
+        <div class="load-actions">
+          <div class="btn btn-secondary upload-wrapper">
+            Upload File
+            <input type="file" id="file-input" accept=".txt,.md">
+          </div>
+          <button class="btn btn-primary" id="parse-btn">Parse Workout</button>
+        </div>
       </div>
-      <button class="btn btn-primary" id="parse-btn">Parse Workout</button>
     </div>
 
     <div class="saved-section">
-      <h2>Saved Workouts</h2>
+      <h2 class="section-label">Saved Workouts</h2>
       <div id="saved-list" class="saved-list"></div>
     </div>
   </div>
@@ -718,6 +772,12 @@ const $fileInput = document.getElementById('file-input');
 const $parseBtn = document.getElementById('parse-btn');
 const $parseError = document.getElementById('parse-error');
 const $savedList = document.getElementById('saved-list');
+const $repoSection = document.getElementById('repo-section');
+const $repoLoading = document.getElementById('repo-loading');
+const $repoList = document.getElementById('repo-list');
+const $customToggle = document.getElementById('custom-toggle');
+const $customBody = document.getElementById('custom-body');
+const $toggleArrow = document.getElementById('toggle-arrow');
 const $previewTitle = document.getElementById('preview-title');
 const $previewDuration = document.getElementById('preview-duration');
 const $previewBlocks = document.getElementById('preview-blocks');
@@ -941,6 +1001,16 @@ function renderPreview() {
 }
 
 // ═══════════════════════════════════════════════════
+// HAPTIC FEEDBACK (Vibration API)
+// ═══════════════════════════════════════════════════
+const canVibrate = 'vibrate' in navigator;
+
+function vibrateBlockChange()  { if (canVibrate) navigator.vibrate([100, 50, 100]); }
+function vibrateCue30s()       { if (canVibrate) navigator.vibrate(80); }
+function vibrateCue10s()       { if (canVibrate) navigator.vibrate([60, 40, 60]); }
+function vibrateComplete()     { if (canVibrate) navigator.vibrate([100, 80, 100, 80, 200]); }
+
+// ═══════════════════════════════════════════════════
 // AUDIO: Speech Synthesis
 // ═══════════════════════════════════════════════════
 function checkSpeech() {
@@ -1043,14 +1113,16 @@ function startWorkout() {
       updateWorkoutUI(msg.blockIdx, msg.remaining);
       updateElapsedUI(msg.workoutElapsed, msg.workoutRemaining);
       announceBlock(msg.blockIdx);
+      vibrateBlockChange();
     }
 
     if (msg.type === 'cue') {
-      if (msg.cue === '30s') speak('Thirty seconds.');
-      if (msg.cue === '10s') speak('Ten seconds.');
+      if (msg.cue === '30s') { speak('Thirty seconds.'); vibrateCue30s(); }
+      if (msg.cue === '10s') { speak('Ten seconds.'); vibrateCue10s(); }
     }
 
     if (msg.type === 'complete') {
+      vibrateComplete();
       workoutComplete();
     }
   };
@@ -1215,6 +1287,74 @@ document.addEventListener('visibilitychange', () => {
 });
 
 // ═══════════════════════════════════════════════════
+// CUSTOM WORKOUT TOGGLE
+// ═══════════════════════════════════════════════════
+$customToggle.addEventListener('click', () => {
+  const open = $customBody.style.display !== 'none';
+  $customBody.style.display = open ? 'none' : 'block';
+  $toggleArrow.classList.toggle('open', !open);
+});
+
+// ═══════════════════════════════════════════════════
+// REPO WORKOUTS
+// ═══════════════════════════════════════════════════
+async function loadRepoWorkouts() {
+  $repoLoading.style.display = 'block';
+  $repoList.innerHTML = '';
+
+  try {
+    const res = await fetch('workouts/manifest.json?t=' + Date.now());
+    if (!res.ok) throw new Error('No manifest');
+    const manifest = await res.json();
+    const workouts = manifest.workouts || [];
+
+    $repoLoading.style.display = 'none';
+
+    if (workouts.length === 0) {
+      $repoList.innerHTML = '<div class="repo-empty">No workouts loaded yet</div>';
+      return;
+    }
+
+    $repoList.innerHTML = workouts.map((w, i) => `
+      <div class="repo-item" data-idx="${i}" data-file="${w.file}">
+        <div>
+          <div class="repo-item-name">${w.name || w.file}</div>
+          ${w.description ? `<div class="repo-item-desc">${w.description}</div>` : ''}
+        </div>
+        <div class="repo-item-arrow">&#8250;</div>
+      </div>
+    `).join('');
+
+    $repoList.querySelectorAll('.repo-item').forEach(el => {
+      el.addEventListener('click', () => loadRepoWorkout(el.dataset.file));
+    });
+
+    // Auto-load if there's exactly one workout
+    if (workouts.length === 1) {
+      loadRepoWorkout(workouts[0].file);
+    }
+  } catch (e) {
+    $repoLoading.style.display = 'none';
+    $repoList.innerHTML = '<div class="repo-empty">No workouts loaded yet</div>';
+    // Auto-expand custom section if no repo workouts
+    $customBody.style.display = 'block';
+    $toggleArrow.classList.add('open');
+  }
+}
+
+async function loadRepoWorkout(file) {
+  try {
+    const res = await fetch('workouts/' + file + '?t=' + Date.now());
+    if (!res.ok) throw new Error('Failed to load workout');
+    const text = await res.text();
+    $input.value = text;
+    doParse();
+  } catch (e) {
+    $repoList.innerHTML = '<div class="repo-empty">Failed to load workout file</div>';
+  }
+}
+
+// ═══════════════════════════════════════════════════
 // SERVICE WORKER REGISTRATION
 // ═══════════════════════════════════════════════════
 if ('serviceWorker' in navigator) {
@@ -1225,6 +1365,7 @@ if ('serviceWorker' in navigator) {
 // INIT
 // ═══════════════════════════════════════════════════
 renderSavedList();
+loadRepoWorkouts();
 </script>
 </body>
 </html>
