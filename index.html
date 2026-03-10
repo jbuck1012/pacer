@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="manifest" href="manifest.json">
+<title>PACER</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #16161f;
+  --surface2: #1e1e2a;
+  --text: #f0f0f5;
+  --text-dim: #8888a0;
+  --blue: #3b82f6;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --orange: #f97316;
+  --green: #22c55e;
+  --purple: #a855f7;
+  --accent: var(--amber);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+body {
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+
+.screen { display: none; height: 100vh; flex-direction: column; }
+.screen.active { display: flex; }
+
+/* ─── Header ─── */
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; flex-shrink: 0;
+}
+.header h1 { font-size: 20px; font-weight: 700; letter-spacing: 2px; color: var(--amber); }
+.header-btn {
+  background: none; border: none; color: var(--text-dim); font-size: 15px;
+  padding: 8px 12px; cursor: pointer;
+}
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 14px 24px; border-radius: 12px; border: none;
+  font-size: 16px; font-weight: 600; cursor: pointer;
+  transition: opacity 0.15s;
+}
+.btn:active { opacity: 0.7; }
+.btn-primary { background: var(--amber); color: #000; }
+.btn-secondary { background: var(--surface2); color: var(--text); }
+.btn-danger { background: #7f1d1d; color: #fca5a5; }
+.btn-full { width: 100%; }
+
+/* ─── Audio Banner ─── */
+.audio-banner {
+  background: #78350f; color: #fde68a; padding: 10px 16px;
+  font-size: 13px; text-align: center; display: none; flex-shrink: 0;
+}
+.audio-banner.visible { display: block; }
+
+/* ═══════════════════════════════════════
+   LOAD SCREEN
+   ═══════════════════════════════════════ */
+#load-screen .body { flex: 1; overflow-y: auto; padding: 0 16px 16px; }
+
+#workout-input {
+  width: 100%; min-height: 160px; max-height: 40vh;
+  background: var(--surface); color: var(--text); border: 1px solid #333;
+  border-radius: 12px; padding: 14px; font-size: 14px;
+  font-family: 'SF Mono', 'Menlo', monospace; resize: vertical;
+  line-height: 1.5;
+}
+#workout-input::placeholder { color: var(--text-dim); }
+
+.load-actions {
+  display: flex; gap: 10px; margin-top: 12px;
+}
+.load-actions .btn { flex: 1; }
+
+.parse-error {
+  background: #450a0a; color: #fca5a5; padding: 12px;
+  border-radius: 8px; margin-top: 12px; font-size: 13px;
+  font-family: monospace; display: none; white-space: pre-wrap;
+}
+.parse-error.visible { display: block; }
+
+.upload-wrapper {
+  position: relative; overflow: hidden;
+}
+.upload-wrapper input[type="file"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer;
+}
+
+.saved-section { margin-top: 24px; }
+.saved-section h2 { font-size: 14px; color: var(--text-dim); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+.saved-list { display: flex; flex-direction: column; gap: 8px; }
+
+.saved-item {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--surface); border-radius: 10px; padding: 14px;
+  cursor: pointer;
+}
+.saved-item:active { background: var(--surface2); }
+.saved-item-name { font-size: 15px; font-weight: 500; flex: 1; }
+.saved-item-meta { font-size: 12px; color: var(--text-dim); margin-right: 12px; }
+.saved-item-delete {
+  background: none; border: none; color: #ef4444; font-size: 22px;
+  padding: 4px 8px; cursor: pointer; line-height: 1;
+}
+
+.empty-state {
+  text-align: center; padding: 30px 0; color: var(--text-dim); font-size: 14px;
+}
+
+/* ═══════════════════════════════════════
+   PREVIEW SCREEN
+   ═══════════════════════════════════════ */
+#preview-screen .body { flex: 1; overflow-y: auto; padding: 0 16px 16px; }
+
+.preview-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 16px;
+}
+.preview-title { font-size: 20px; font-weight: 700; }
+.preview-duration { font-size: 15px; color: var(--text-dim); }
+
+.preview-blocks { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+
+.preview-block {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--surface); border-radius: 10px; padding: 12px;
+  border-left: 4px solid var(--accent);
+}
+.preview-block-type {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; min-width: 72px;
+}
+.preview-block-dur { font-size: 14px; font-weight: 600; min-width: 44px; }
+.preview-block-pace { font-size: 13px; color: var(--text-dim); flex: 1; }
+.preview-block-cue { font-size: 12px; color: var(--text-dim); font-style: italic; }
+
+.repeat-bracket {
+  background: var(--surface2); border-radius: 10px; padding: 8px;
+  margin: 4px 0; border-left: 3px dashed var(--text-dim);
+}
+.repeat-label {
+  font-size: 12px; color: var(--text-dim); font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px;
+}
+
+.preview-actions { display: flex; gap: 10px; padding: 16px; flex-shrink: 0; }
+.preview-actions .btn { flex: 1; }
+
+/* ═══════════════════════════════════════
+   WORKOUT SCREEN
+   ═══════════════════════════════════════ */
+#workout-screen {
+  position: relative;
+}
+
+.accent-bar {
+  height: 6px; width: 100%; flex-shrink: 0;
+  transition: background-color 0.3s;
+}
+
+.workout-body {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 16px; gap: 8px; overflow: hidden;
+}
+
+.workout-block-label {
+  font-size: 18px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; padding: 6px 20px; border-radius: 8px;
+}
+
+.workout-zone { font-size: 15px; color: var(--text-dim); margin-top: 2px; }
+
+.workout-timer {
+  font-size: 96px; font-weight: 800; font-variant-numeric: tabular-nums;
+  letter-spacing: -2px; line-height: 1;
+  margin: 8px 0;
+}
+
+.workout-pace { font-size: 22px; font-weight: 600; }
+
+.workout-cue {
+  font-size: 16px; color: var(--text-dim); font-style: italic;
+  text-align: center; max-width: 90%;
+}
+
+.workout-progress {
+  font-size: 13px; color: var(--text-dim); margin-top: 4px;
+}
+
+.workout-next {
+  flex-shrink: 0; background: var(--surface);
+  padding: 12px 16px; display: flex; align-items: center; gap: 12px;
+  border-top: 1px solid #222;
+}
+.workout-next-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+.workout-next-info { font-size: 15px; font-weight: 500; }
+.workout-next-dur { font-size: 14px; color: var(--text-dim); margin-left: auto; }
+
+.workout-controls {
+  flex-shrink: 0; display: flex; gap: 10px;
+  padding: 12px 16px; padding-bottom: calc(12px + var(--safe-bottom));
+}
+.workout-controls .btn { flex: 1; }
+
+/* ─── Complete overlay ─── */
+.complete-overlay {
+  position: absolute; inset: 0; background: var(--bg);
+  display: none; flex-direction: column;
+  align-items: center; justify-content: center; gap: 16px;
+  z-index: 10;
+}
+.complete-overlay.active { display: flex; }
+.complete-check { font-size: 64px; }
+.complete-title { font-size: 28px; font-weight: 700; }
+.complete-sub { font-size: 16px; color: var(--text-dim); }
+
+/* ─── Confirm dialog ─── */
+.confirm-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+  display: none; align-items: center; justify-content: center;
+  z-index: 20; padding: 24px;
+}
+.confirm-overlay.active { display: flex; }
+.confirm-box {
+  background: var(--surface); border-radius: 16px; padding: 24px;
+  max-width: 320px; width: 100%; text-align: center;
+}
+.confirm-box p { margin-bottom: 20px; font-size: 16px; }
+.confirm-actions { display: flex; gap: 10px; }
+.confirm-actions .btn { flex: 1; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ LOAD SCREEN ═══════════ -->
+<div id="load-screen" class="screen active">
+  <div class="header">
+    <h1>PACER</h1>
+  </div>
+  <div class="body">
+    <textarea id="workout-input" placeholder="WORKOUT: My Workout
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+PUSH: 2:00 | Push | ~9:30/mile | Hard effort
+RECOVERY: 1:00 | Recovery | ~11:30/mile | Recover
+REPEAT: 3
+COOLDOWN: 3:00 | Easy | ~12:00/mile | Cool down"></textarea>
+    <div class="parse-error" id="parse-error"></div>
+    <div class="load-actions">
+      <div class="btn btn-secondary upload-wrapper">
+        Upload File
+        <input type="file" id="file-input" accept=".txt,.md">
+      </div>
+      <button class="btn btn-primary" id="parse-btn">Parse Workout</button>
+    </div>
+
+    <div class="saved-section">
+      <h2>Saved Workouts</h2>
+      <div id="saved-list" class="saved-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ PREVIEW SCREEN ═══════════ -->
+<div id="preview-screen" class="screen">
+  <div class="header">
+    <button class="header-btn" id="preview-back">&larr; Back</button>
+    <h1>PACER</h1>
+    <div style="width:60px"></div>
+  </div>
+  <div class="body">
+    <div class="preview-header">
+      <div class="preview-title" id="preview-title"></div>
+      <div class="preview-duration" id="preview-duration"></div>
+    </div>
+    <div class="preview-blocks" id="preview-blocks"></div>
+  </div>
+  <div class="preview-actions">
+    <button class="btn btn-secondary" id="save-btn">Save</button>
+    <button class="btn btn-primary" id="start-btn">Start Workout</button>
+  </div>
+</div>
+
+<!-- ═══════════ WORKOUT SCREEN ═══════════ -->
+<div id="workout-screen" class="screen">
+  <div class="accent-bar" id="accent-bar"></div>
+  <div class="audio-banner" id="audio-banner">Audio cues unavailable – running in visual-only mode</div>
+  <div class="workout-body">
+    <div class="workout-block-label" id="w-block-label"></div>
+    <div class="workout-zone" id="w-zone"></div>
+    <div class="workout-timer" id="w-timer">0:00</div>
+    <div class="workout-pace" id="w-pace"></div>
+    <div class="workout-cue" id="w-cue"></div>
+    <div class="workout-progress" id="w-progress"></div>
+  </div>
+  <div class="workout-next" id="w-next">
+    <div>
+      <div class="workout-next-label">Up Next</div>
+      <div class="workout-next-info" id="w-next-info"></div>
+    </div>
+    <div class="workout-next-dur" id="w-next-dur"></div>
+  </div>
+  <div class="workout-controls">
+    <button class="btn btn-secondary" id="end-btn">End</button>
+    <button class="btn btn-secondary" id="skip-btn">Skip</button>
+    <button class="btn btn-primary" id="pause-btn">Pause</button>
+  </div>
+
+  <div class="complete-overlay" id="complete-overlay">
+    <div class="complete-check">&#10003;</div>
+    <div class="complete-title">Workout Complete</div>
+    <div class="complete-sub" id="complete-sub">Nice work.</div>
+    <button class="btn btn-primary" id="complete-done-btn" style="margin-top:20px;">Done</button>
+  </div>
+</div>
+
+<!-- ═══════════ CONFIRM DIALOG ═══════════ -->
+<div class="confirm-overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <p>End workout early?</p>
+    <div class="confirm-actions">
+      <button class="btn btn-secondary" id="confirm-cancel">Cancel</button>
+      <button class="btn btn-danger" id="confirm-end">End Workout</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+// BLOCK TYPE CONFIG
+// ═══════════════════════════════════════════════════
+const BLOCK_COLORS = {
+  WARMUP:   'var(--blue)',
+  COOLDOWN: 'var(--blue)',
+  BASE:     'var(--amber)',
+  PUSH:     'var(--red)',
+  INTERVAL: 'var(--orange)',
+  RECOVERY: 'var(--green)',
+  REST:     'var(--green)',
+  'ALL-OUT':'var(--purple)',
+};
+
+const BLOCK_HEX = {
+  WARMUP:   '#3b82f6', COOLDOWN: '#3b82f6', BASE: '#f59e0b',
+  PUSH:     '#ef4444', INTERVAL: '#f97316', RECOVERY: '#22c55e',
+  REST:     '#22c55e', 'ALL-OUT': '#a855f7',
+};
+
+const VALID_TYPES = new Set(Object.keys(BLOCK_COLORS));
+
+// ═══════════════════════════════════════════════════
+// PARSER
+// ═══════════════════════════════════════════════════
+function parseWorkout(text) {
+  const lines = text.split('\n');
+  let name = 'Untitled Workout';
+  let threshold = '';
+  const blocks = [];
+  const errors = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const raw = lines[i].trim();
+    if (!raw || raw.startsWith('#')) continue;
+    const lineNum = i + 1;
+
+    // WORKOUT name
+    if (raw.toUpperCase().startsWith('WORKOUT:')) {
+      name = raw.slice(raw.indexOf(':') + 1).trim();
+      continue;
+    }
+
+    // THRESHOLD
+    if (raw.toUpperCase().startsWith('THRESHOLD:')) {
+      threshold = raw.slice(raw.indexOf(':') + 1).trim();
+      continue;
+    }
+
+    // REPEAT
+    if (raw.toUpperCase().startsWith('REPEAT:')) {
+      const n = parseInt(raw.slice(raw.indexOf(':') + 1).trim(), 10);
+      if (isNaN(n) || n < 1) {
+        errors.push(`Line ${lineNum}: REPEAT value must be a positive integer`);
+        continue;
+      }
+      blocks.push({ type: 'REPEAT', count: n, line: lineNum });
+      continue;
+    }
+
+    // Block line: TYPE: MM:SS | Zone | Pace | Cue
+    const colonIdx = raw.indexOf(':');
+    if (colonIdx === -1) {
+      errors.push(`Line ${lineNum}: Unrecognized line format`);
+      continue;
+    }
+
+    const typePart = raw.slice(0, colonIdx).trim().toUpperCase();
+    if (!VALID_TYPES.has(typePart)) {
+      errors.push(`Line ${lineNum}: Unknown block type "${typePart}"`);
+      continue;
+    }
+
+    const rest = raw.slice(colonIdx + 1).trim();
+    const fields = rest.split('|').map(f => f.trim());
+
+    if (fields.length < 4) {
+      errors.push(`Line ${lineNum}: Expected 4 fields (Duration | Zone | Pace | Cue), got ${fields.length}`);
+      continue;
+    }
+
+    const durStr = fields[0];
+    const durMatch = durStr.match(/^(\d+):(\d{2})$/);
+    if (!durMatch) {
+      errors.push(`Line ${lineNum}: Invalid duration "${durStr}" – expected M:SS or MM:SS`);
+      continue;
+    }
+    const durSec = parseInt(durMatch[1], 10) * 60 + parseInt(durMatch[2], 10);
+    if (durSec === 0) {
+      errors.push(`Line ${lineNum}: Duration cannot be zero`);
+      continue;
+    }
+
+    blocks.push({
+      type: typePart,
+      duration: durSec,
+      zone: fields[1],
+      pace: fields[2],
+      cue: fields[3],
+      line: lineNum,
+    });
+  }
+
+  if (errors.length > 0) {
+    return { error: errors.join('\n') };
+  }
+
+  // Expand repeats
+  const expanded = expandRepeats(blocks);
+  if (expanded.error) return expanded;
+
+  return { name, threshold, blocks: expanded.blocks, totalDuration: expanded.blocks.reduce((s, b) => s + b.duration, 0) };
+}
+
+function expandRepeats(blocks) {
+  // Find REPEAT directives and expand
+  const result = [];
+  let i = 0;
+  // Separate warmup blocks at the start
+  while (i < blocks.length && blocks[i].type === 'WARMUP') {
+    result.push({ ...blocks[i], rep: null, repTotal: null, blockInRep: null, blocksInRep: null });
+    i++;
+  }
+
+  // Collect remaining blocks
+  const remaining = blocks.slice(i);
+
+  // Find REPEAT
+  const repeatIdx = remaining.findIndex(b => b.type === 'REPEAT');
+
+  if (repeatIdx === -1) {
+    // No repeat – just add everything
+    for (const b of remaining) {
+      if (b.type === 'REPEAT') continue;
+      result.push({ ...b, rep: null, repTotal: null, blockInRep: null, blocksInRep: null });
+    }
+    return { blocks: result };
+  }
+
+  const repeatBlock = remaining[repeatIdx];
+  const repeatCount = repeatBlock.count;
+
+  // Blocks before REPEAT (excluding COOLDOWN) form the repeat group
+  const repeatGroup = [];
+  const afterRepeat = [];
+  for (let j = 0; j < remaining.length; j++) {
+    if (j < repeatIdx) {
+      repeatGroup.push(remaining[j]);
+    } else if (j > repeatIdx) {
+      afterRepeat.push(remaining[j]);
+    }
+  }
+
+  // Expand
+  for (let rep = 0; rep < repeatCount; rep++) {
+    for (let bi = 0; bi < repeatGroup.length; bi++) {
+      const b = repeatGroup[bi];
+      result.push({
+        ...b,
+        rep: rep + 1,
+        repTotal: repeatCount,
+        blockInRep: bi + 1,
+        blocksInRep: repeatGroup.length,
+      });
+    }
+  }
+
+  // Cooldown / after-repeat blocks
+  for (const b of afterRepeat) {
+    result.push({ ...b, rep: null, repTotal: null, blockInRep: null, blocksInRep: null });
+  }
+
+  return { blocks: result };
+}
+
+// ═══════════════════════════════════════════════════
+// WEB WORKER (inline via Blob)
+// ═══════════════════════════════════════════════════
+const workerCode = `
+let blocks = [];
+let currentBlockIdx = 0;
+let blockStartTime = 0;
+let workoutStartTime = 0;
+let paused = false;
+let pauseTime = 0;
+let totalPauseMs = 0;
+let tickInterval = null;
+let cueFired = {};
+
+function now() { return Date.now(); }
+
+function getElapsedInBlock() {
+  const t = paused ? pauseTime : now();
+  return (t - blockStartTime - totalPauseMs) / 1000;
+}
+
+function getRemainingInBlock() {
+  if (currentBlockIdx >= blocks.length) return 0;
+  const elapsed = getElapsedInBlock();
+  return Math.max(0, blocks[currentBlockIdx].duration - elapsed);
+}
+
+function tick() {
+  if (paused || currentBlockIdx >= blocks.length) return;
+
+  const remaining = getRemainingInBlock();
+  const block = blocks[currentBlockIdx];
+  const elapsed = block.duration - remaining;
+
+  // Audio cue checks
+  if (block.duration >= 30 && remaining <= 30 && remaining > 29 && !cueFired['30s']) {
+    cueFired['30s'] = true;
+    // Check anti-stacking: only fire if more than 2 seconds before block end
+    if (remaining > 2) {
+      self.postMessage({ type: 'cue', cue: '30s' });
+    }
+  }
+  if (block.duration >= 12 && remaining <= 10 && remaining > 9 && !cueFired['10s']) {
+    cueFired['10s'] = true;
+    // Check anti-stacking: only fire if more than 2 seconds before block end
+    if (remaining > 2) {
+      self.postMessage({ type: 'cue', cue: '10s' });
+    }
+  }
+
+  // Block complete
+  if (remaining <= 0) {
+    advanceBlock();
+    return;
+  }
+
+  self.postMessage({
+    type: 'tick',
+    remaining: remaining,
+    blockIdx: currentBlockIdx,
+    totalBlocks: blocks.length,
+  });
+}
+
+function advanceBlock() {
+  currentBlockIdx++;
+  totalPauseMs = 0;
+
+  if (currentBlockIdx >= blocks.length) {
+    clearInterval(tickInterval);
+    self.postMessage({ type: 'complete' });
+    return;
+  }
+
+  blockStartTime = now();
+  cueFired = {};
+  self.postMessage({
+    type: 'block-start',
+    blockIdx: currentBlockIdx,
+    remaining: blocks[currentBlockIdx].duration,
+  });
+}
+
+self.onmessage = function(e) {
+  const msg = e.data;
+
+  if (msg.type === 'start') {
+    blocks = msg.blocks;
+    currentBlockIdx = 0;
+    workoutStartTime = now();
+    blockStartTime = now();
+    totalPauseMs = 0;
+    paused = false;
+    cueFired = {};
+
+    self.postMessage({
+      type: 'block-start',
+      blockIdx: 0,
+      remaining: blocks[0].duration,
+    });
+
+    tickInterval = setInterval(tick, 200);
+  }
+
+  if (msg.type === 'pause') {
+    paused = true;
+    pauseTime = now();
+    self.postMessage({ type: 'paused' });
+  }
+
+  if (msg.type === 'resume') {
+    totalPauseMs += now() - pauseTime;
+    paused = false;
+    self.postMessage({ type: 'resumed' });
+  }
+
+  if (msg.type === 'skip') {
+    advanceBlock();
+  }
+
+  if (msg.type === 'stop') {
+    clearInterval(tickInterval);
+    paused = false;
+  }
+
+  if (msg.type === 'sync') {
+    // Force sync request - respond with current state
+    if (currentBlockIdx < blocks.length) {
+      self.postMessage({
+        type: 'tick',
+        remaining: getRemainingInBlock(),
+        blockIdx: currentBlockIdx,
+        totalBlocks: blocks.length,
+      });
+    }
+  }
+};
+`;
+
+// ═══════════════════════════════════════════════════
+// APP STATE
+// ═══════════════════════════════════════════════════
+let currentWorkout = null;
+let worker = null;
+let audioCtx = null;
+let keepaliveOsc = null;
+let speechAvailable = true;
+let isPaused = false;
+let activeBlockIdx = 0;
+
+// ─── DOM refs ───
+const $loadScreen = document.getElementById('load-screen');
+const $previewScreen = document.getElementById('preview-screen');
+const $workoutScreen = document.getElementById('workout-screen');
+const $input = document.getElementById('workout-input');
+const $fileInput = document.getElementById('file-input');
+const $parseBtn = document.getElementById('parse-btn');
+const $parseError = document.getElementById('parse-error');
+const $savedList = document.getElementById('saved-list');
+const $previewTitle = document.getElementById('preview-title');
+const $previewDuration = document.getElementById('preview-duration');
+const $previewBlocks = document.getElementById('preview-blocks');
+const $previewBack = document.getElementById('preview-back');
+const $saveBtn = document.getElementById('save-btn');
+const $startBtn = document.getElementById('start-btn');
+const $accentBar = document.getElementById('accent-bar');
+const $audioBanner = document.getElementById('audio-banner');
+const $wBlockLabel = document.getElementById('w-block-label');
+const $wZone = document.getElementById('w-zone');
+const $wTimer = document.getElementById('w-timer');
+const $wPace = document.getElementById('w-pace');
+const $wCue = document.getElementById('w-cue');
+const $wProgress = document.getElementById('w-progress');
+const $wNext = document.getElementById('w-next');
+const $wNextInfo = document.getElementById('w-next-info');
+const $wNextDur = document.getElementById('w-next-dur');
+const $pauseBtn = document.getElementById('pause-btn');
+const $skipBtn = document.getElementById('skip-btn');
+const $endBtn = document.getElementById('end-btn');
+const $completeOverlay = document.getElementById('complete-overlay');
+const $completeDoneBtn = document.getElementById('complete-done-btn');
+const $confirmOverlay = document.getElementById('confirm-overlay');
+const $confirmCancel = document.getElementById('confirm-cancel');
+const $confirmEnd = document.getElementById('confirm-end');
+
+// ═══════════════════════════════════════════════════
+// SCREEN NAVIGATION
+// ═══════════════════════════════════════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ═══════════════════════════════════════════════════
+// FORMAT HELPERS
+// ═══════════════════════════════════════════════════
+function fmtDuration(sec) {
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${s.toString().padStart(2, '0')}`;
+}
+
+function fmtDurationLong(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  if (m === 0) return `${s}s`;
+  if (s === 0) return `${m}m`;
+  return `${m}m ${s}s`;
+}
+
+function speakPace(pace) {
+  // Convert "~9:30/mile" -> "Nine thirty"
+  // Convert "Walk" -> "Walk"
+  const cleaned = pace.replace(/^~/, '').replace(/\/mile.*/, '').trim();
+  const match = cleaned.match(/^(\d+):(\d{2})$/);
+  if (!match) return cleaned;
+
+  const mins = parseInt(match[1], 10);
+  const secs = parseInt(match[2], 10);
+
+  const numWords = ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen'];
+  const tensWords = { 20:'twenty', 30:'thirty', 40:'forty', 50:'fifty' };
+
+  function toWord(n) {
+    if (n <= 15) return numWords[n] || n.toString();
+    if (n < 20) return numWords[n] || n.toString();
+    const ten = Math.floor(n / 10) * 10;
+    const one = n % 10;
+    const base = tensWords[ten] || n.toString();
+    return one === 0 ? base : `${base} ${numWords[one]}`;
+  }
+
+  const minWord = toWord(mins);
+  if (secs === 0) return minWord;
+  const secWord = toWord(secs);
+  return `${minWord} ${secWord}`;
+}
+
+// ═══════════════════════════════════════════════════
+// STORAGE
+// ═══════════════════════════════════════════════════
+let storageAvailable = false;
+try {
+  localStorage.setItem('__pacer_test', '1');
+  localStorage.removeItem('__pacer_test');
+  storageAvailable = true;
+} catch (e) {
+  storageAvailable = false;
+}
+
+function getSavedWorkouts() {
+  if (!storageAvailable) return {};
+  try {
+    return JSON.parse(localStorage.getItem('pacer_workouts') || '{}');
+  } catch { return {}; }
+}
+
+function saveWorkout(name, text) {
+  if (!storageAvailable) return;
+  const saved = getSavedWorkouts();
+  saved[name] = { text, savedAt: Date.now() };
+  localStorage.setItem('pacer_workouts', JSON.stringify(saved));
+}
+
+function deleteWorkout(name) {
+  if (!storageAvailable) return;
+  const saved = getSavedWorkouts();
+  delete saved[name];
+  localStorage.setItem('pacer_workouts', JSON.stringify(saved));
+}
+
+function renderSavedList() {
+  const saved = getSavedWorkouts();
+  const names = Object.keys(saved).sort((a, b) => (saved[b].savedAt || 0) - (saved[a].savedAt || 0));
+
+  if (names.length === 0) {
+    $savedList.innerHTML = '<div class="empty-state">No saved workouts yet</div>';
+    return;
+  }
+
+  $savedList.innerHTML = names.map(name => `
+    <div class="saved-item" data-name="${name.replace(/"/g, '&quot;')}">
+      <div class="saved-item-name">${name}</div>
+      <button class="saved-item-delete" data-delete="${name.replace(/"/g, '&quot;')}">&times;</button>
+    </div>
+  `).join('');
+
+  $savedList.querySelectorAll('.saved-item').forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (e.target.closest('.saved-item-delete')) return;
+      const n = el.dataset.name;
+      const s = getSavedWorkouts();
+      if (s[n]) {
+        $input.value = s[n].text;
+        doParse();
+      }
+    });
+  });
+
+  $savedList.querySelectorAll('.saved-item-delete').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const n = btn.dataset.delete;
+      deleteWorkout(n);
+      renderSavedList();
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════
+// PARSE & PREVIEW
+// ═══════════════════════════════════════════════════
+function doParse() {
+  const text = $input.value.trim();
+  if (!text) {
+    $parseError.textContent = 'Please paste or upload a workout file.';
+    $parseError.classList.add('visible');
+    return;
+  }
+
+  $parseError.classList.remove('visible');
+  const result = parseWorkout(text);
+
+  if (result.error) {
+    $parseError.textContent = result.error;
+    $parseError.classList.add('visible');
+    return;
+  }
+
+  currentWorkout = result;
+  currentWorkout._rawText = text;
+  renderPreview();
+  showScreen('preview-screen');
+}
+
+function renderPreview() {
+  const w = currentWorkout;
+  $previewTitle.textContent = w.name;
+  $previewDuration.textContent = fmtDurationLong(w.totalDuration);
+
+  // Group blocks for display: detect repeat groups
+  let html = '';
+  let inRepeat = false;
+  let lastRepTotal = null;
+
+  for (let i = 0; i < w.blocks.length; i++) {
+    const b = w.blocks[i];
+    const color = BLOCK_HEX[b.type] || '#888';
+
+    // Start repeat bracket
+    if (b.rep !== null && !inRepeat) {
+      inRepeat = true;
+      lastRepTotal = b.repTotal;
+      html += `<div class="repeat-bracket"><div class="repeat-label">&times; ${b.repTotal}</div>`;
+    }
+
+    // Close repeat bracket if we left the repeat group
+    if (b.rep === null && inRepeat) {
+      inRepeat = false;
+      html += `</div>`;
+    }
+
+    // Only render once per unique block in rep 1 (within bracket)
+    if (b.rep !== null && b.rep > 1) continue;
+
+    html += `
+      <div class="preview-block" style="border-left-color:${color}">
+        <div class="preview-block-type" style="color:${color}">${b.type}</div>
+        <div class="preview-block-dur">${fmtDuration(b.duration)}</div>
+        <div class="preview-block-pace">${b.pace}</div>
+      </div>
+    `;
+  }
+
+  if (inRepeat) html += `</div>`;
+
+  $previewBlocks.innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════════
+// AUDIO: Speech Synthesis
+// ═══════════════════════════════════════════════════
+function checkSpeech() {
+  try {
+    if (!('speechSynthesis' in window)) return false;
+    const u = new SpeechSynthesisUtterance('');
+    return true;
+  } catch { return false; }
+}
+
+function speak(text) {
+  if (!speechAvailable) return;
+  try {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 1.0;
+    u.pitch = 1.0;
+    u.volume = 1.0;
+    window.speechSynthesis.speak(u);
+  } catch {
+    speechAvailable = false;
+    $audioBanner.classList.add('visible');
+  }
+}
+
+// ═══════════════════════════════════════════════════
+// AUDIO: Silent Keepalive
+// ═══════════════════════════════════════════════════
+function startKeepalive() {
+  try {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    keepaliveOsc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    gain.gain.value = 0.001; // near silent
+    keepaliveOsc.connect(gain);
+    gain.connect(audioCtx.destination);
+    keepaliveOsc.start();
+  } catch (e) {
+    // Not critical – Layer 3 failure is acceptable
+  }
+}
+
+function stopKeepalive() {
+  try {
+    if (keepaliveOsc) { keepaliveOsc.stop(); keepaliveOsc = null; }
+    if (audioCtx) { audioCtx.close(); audioCtx = null; }
+  } catch {}
+}
+
+// ═══════════════════════════════════════════════════
+// WORKOUT ENGINE
+// ═══════════════════════════════════════════════════
+function startWorkout() {
+  const w = currentWorkout;
+  if (!w || w.blocks.length === 0) return;
+
+  // Check speech
+  speechAvailable = checkSpeech();
+  if (!speechAvailable) {
+    $audioBanner.classList.add('visible');
+  } else {
+    $audioBanner.classList.remove('visible');
+    // Test speech with a silent utterance to unlock audio on iOS
+    try {
+      const test = new SpeechSynthesisUtterance('');
+      test.volume = 0;
+      window.speechSynthesis.speak(test);
+    } catch { }
+  }
+
+  isPaused = false;
+  activeBlockIdx = 0;
+  $completeOverlay.classList.remove('active');
+  $pauseBtn.textContent = 'Pause';
+
+  showScreen('workout-screen');
+  updateWorkoutUI(0, w.blocks[0].duration);
+
+  // Start keepalive
+  startKeepalive();
+
+  // Announce first block
+  announceBlock(0);
+
+  // Create worker
+  const blob = new Blob([workerCode], { type: 'application/javascript' });
+  worker = new Worker(URL.createObjectURL(blob));
+
+  worker.onmessage = (e) => {
+    const msg = e.data;
+
+    if (msg.type === 'tick') {
+      activeBlockIdx = msg.blockIdx;
+      updateWorkoutUI(msg.blockIdx, msg.remaining);
+    }
+
+    if (msg.type === 'block-start') {
+      activeBlockIdx = msg.blockIdx;
+      updateWorkoutUI(msg.blockIdx, msg.remaining);
+      announceBlock(msg.blockIdx);
+    }
+
+    if (msg.type === 'cue') {
+      if (msg.cue === '30s') speak('Thirty seconds.');
+      if (msg.cue === '10s') speak('Ten seconds.');
+    }
+
+    if (msg.type === 'complete') {
+      workoutComplete();
+    }
+  };
+
+  worker.postMessage({
+    type: 'start',
+    blocks: w.blocks.map(b => ({ duration: b.duration })),
+  });
+}
+
+function announceBlock(idx) {
+  const b = currentWorkout.blocks[idx];
+  if (!b) return;
+  const paceSpoken = speakPace(b.pace);
+  speak(`${b.type.replace('-', ' ')}. ${paceSpoken}.`);
+}
+
+function updateWorkoutUI(blockIdx, remaining) {
+  const w = currentWorkout;
+  const b = w.blocks[blockIdx];
+  if (!b) return;
+
+  const color = BLOCK_COLORS[b.type] || '#888';
+  const hex = BLOCK_HEX[b.type] || '#888';
+
+  $accentBar.style.backgroundColor = hex;
+  $wBlockLabel.textContent = b.type;
+  $wBlockLabel.style.backgroundColor = hex + '22';
+  $wBlockLabel.style.color = hex;
+  $wZone.textContent = b.zone;
+  $wTimer.textContent = fmtDuration(Math.ceil(remaining));
+  $wPace.textContent = b.pace;
+  $wCue.textContent = b.cue;
+
+  // Progress
+  if (b.rep !== null) {
+    $wProgress.textContent = `Rep ${b.rep} of ${b.repTotal} – Block ${b.blockInRep} of ${b.blocksInRep}`;
+  } else {
+    $wProgress.textContent = `Block ${blockIdx + 1} of ${w.blocks.length}`;
+  }
+
+  // Next block preview
+  const next = w.blocks[blockIdx + 1];
+  if (next) {
+    $wNext.style.display = 'flex';
+    $wNextInfo.textContent = `${next.type} – ${next.pace}`;
+    $wNextDur.textContent = fmtDuration(next.duration);
+  } else {
+    $wNext.style.display = 'flex';
+    $wNextInfo.textContent = 'Finish';
+    $wNextDur.textContent = '';
+  }
+}
+
+function workoutComplete() {
+  speak('Workout complete. Nice work.');
+  stopKeepalive();
+  $completeOverlay.classList.add('active');
+}
+
+function stopWorkout() {
+  if (worker) {
+    worker.postMessage({ type: 'stop' });
+    worker.terminate();
+    worker = null;
+  }
+  stopKeepalive();
+  try { window.speechSynthesis.cancel(); } catch {}
+}
+
+// ═══════════════════════════════════════════════════
+// EVENT HANDLERS
+// ═══════════════════════════════════════════════════
+
+// Load screen
+$parseBtn.addEventListener('click', doParse);
+
+$fileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    $input.value = reader.result;
+    $fileInput.value = '';
+    doParse();
+  };
+  reader.readAsText(file);
+});
+
+// Preview screen
+$previewBack.addEventListener('click', () => {
+  showScreen('load-screen');
+  renderSavedList();
+});
+
+$saveBtn.addEventListener('click', () => {
+  if (!currentWorkout) return;
+  saveWorkout(currentWorkout.name, currentWorkout._rawText);
+  $saveBtn.textContent = 'Saved!';
+  setTimeout(() => { $saveBtn.textContent = 'Save'; }, 1500);
+});
+
+$startBtn.addEventListener('click', startWorkout);
+
+// Workout screen
+$pauseBtn.addEventListener('click', () => {
+  if (!worker) return;
+  if (isPaused) {
+    worker.postMessage({ type: 'resume' });
+    isPaused = false;
+    $pauseBtn.textContent = 'Pause';
+    startKeepalive();
+  } else {
+    worker.postMessage({ type: 'pause' });
+    isPaused = true;
+    $pauseBtn.textContent = 'Resume';
+    stopKeepalive();
+  }
+});
+
+$skipBtn.addEventListener('click', () => {
+  if (!worker) return;
+  worker.postMessage({ type: 'skip' });
+});
+
+$endBtn.addEventListener('click', () => {
+  $confirmOverlay.classList.add('active');
+});
+
+$confirmCancel.addEventListener('click', () => {
+  $confirmOverlay.classList.remove('active');
+});
+
+$confirmEnd.addEventListener('click', () => {
+  $confirmOverlay.classList.remove('active');
+  stopWorkout();
+  showScreen('load-screen');
+  renderSavedList();
+});
+
+$completeDoneBtn.addEventListener('click', () => {
+  stopWorkout();
+  $completeOverlay.classList.remove('active');
+  showScreen('load-screen');
+  renderSavedList();
+});
+
+// Visibility change – sync timer when returning to app
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && worker && !isPaused) {
+    worker.postMessage({ type: 'sync' });
+    // Resume audio context if suspended
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  }
+});
+
+// ═══════════════════════════════════════════════════
+// SERVICE WORKER REGISTRATION
+// ═══════════════════════════════════════════════════
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+// ═══════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════
+renderSavedList();
+</script>
+</body>
+</html>
