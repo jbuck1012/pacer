@@ -1,3 +1,9 @@
 {
-  "workouts": []
+  "workouts": [
+    {
+      "file": "tempo-run.txt",
+      "name": "Tempo Run",
+      "description": ""
+    }
+  ]
 }
