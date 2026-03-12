@@ -14,6 +14,7 @@ The user will provide a workout — either as a complete file, a description to 
 
 ```
 WORKOUT: Name
+DESCRIPTION: Brief description  (optional, shown in workout list)
 THRESHOLD: pace/mile  (optional)
 
 TYPE: M:SS | Zone | Pace | Cue
@@ -32,16 +33,9 @@ See `COACHING.md` for the full format specification and examples.
 
 1. **Validate** the workout content against the format rules above. Fix any issues.
 2. **Choose a filename:** `workouts/<kebab-case-name>.txt`
-3. **Write the file** to `workouts/<filename>.txt`
-4. **Update `workouts/manifest.json`** — replace the `workouts` array with exactly one entry:
-   ```json
-   {
-     "workouts": [
-       { "file": "<filename>.txt", "name": "<Workout Name>", "description": "<brief description>" }
-     ]
-   }
-   ```
-   Do NOT delete old `.txt` files from the `workouts/` directory.
-5. **Show the user** the file contents and manifest entry for confirmation.
-6. **Commit** both files with message: `Add workout: <Workout Name>`
-7. **Push** to `origin main`
+3. **Write the file** to `workouts/<filename>.txt` — include a `DESCRIPTION:` line for the manifest.
+4. **Show the user** the file contents for confirmation.
+5. **Commit** the workout file with message: `Add workout: <Workout Name>`
+6. **Push** to `origin main`
+
+**Note:** Do NOT manually edit `workouts/manifest.json`. A GitHub Actions workflow automatically regenerates it when workout files are pushed.

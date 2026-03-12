@@ -1,0 +1,60 @@
+name: Update workout manifest
+
+on:
+  push:
+    paths:
+      - 'workouts/**'
+      - '!workouts/manifest.json'
+
+permissions:
+  contents: write
+
+jobs:
+  update-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate manifest
+        run: |
+          node - <<'SCRIPT'
+          const fs = require('fs');
+          const path = require('path');
+
+          const dir = 'workouts';
+          const files = fs.readdirSync(dir)
+            .filter(f => f !== 'manifest.json' && !f.startsWith('.'))
+            .sort();
+
+          const workouts = files.map(file => {
+            const content = fs.readFileSync(path.join(dir, file), 'utf8');
+            // Default name from filename: "tempo-run.txt" → "Tempo Run"
+            let name = file.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+            let description = '';
+            for (const line of content.split('\n')) {
+              const trimmed = line.trim();
+              if (trimmed.toUpperCase().startsWith('WORKOUT:')) {
+                name = trimmed.slice(trimmed.indexOf(':') + 1).trim();
+              }
+              if (trimmed.toUpperCase().startsWith('DESCRIPTION:')) {
+                description = trimmed.slice(trimmed.indexOf(':') + 1).trim();
+              }
+            }
+            return { file, name, description };
+          });
+
+          fs.writeFileSync(
+            path.join(dir, 'manifest.json'),
+            JSON.stringify({ workouts }, null, 2) + '\n'
+          );
+          console.log('Generated manifest with', workouts.length, 'workouts');
+          SCRIPT
+
+      - name: Commit manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add workouts/manifest.json
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "chore: auto-update workout manifest"
+          git push

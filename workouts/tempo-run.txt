@@ -1,0 +1,3 @@
+WARMUP: 5:00 | Easy | ~12:00/mile | Warm up easy
+PUSH: 15:00 | Threshold | ~9:30/mile | Hold tempo pace
+COOLDOWN: 5:00 | Easy | ~12:00/mile | Cool down

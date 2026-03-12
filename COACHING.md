@@ -22,10 +22,12 @@ Files live in `workouts/` and are plain text (`.txt`).
 
 ```
 WORKOUT: 5K Tempo Session
+DESCRIPTION: Sustained threshold effort with warmup and cooldown
 THRESHOLD: 9:30/mile
 ```
 
-- `WORKOUT: <name>` — Display name (defaults to "Untitled Workout" if omitted)
+- `WORKOUT: <name>` — Display name (optional; defaults to title-cased filename, e.g. `tempo-run.txt` → "Tempo Run")
+- `DESCRIPTION: <text>` — Short description shown in the workout list (optional, used by auto-manifest)
 - `THRESHOLD: <value>` — Informational threshold pace (optional)
 
 ### Block Lines
@@ -92,9 +94,13 @@ The parser will reject files with these errors:
 
 ---
 
-## Manifest Format
+## Manifest (Auto-Generated)
 
-**File:** `workouts/manifest.json`
+**File:** `workouts/manifest.json` — **do NOT edit manually.**
+
+A GitHub Actions workflow automatically regenerates this file whenever workout files in `workouts/` are pushed. It scans every non-manifest file, extracts `WORKOUT:` and `DESCRIPTION:` lines, and writes the manifest.
+
+The manifest format:
 
 ```json
 {
@@ -108,26 +114,16 @@ The parser will reject files with these errors:
 }
 ```
 
-| Field | Required | Notes |
-|-------|----------|-------|
-| `file` | Yes | Filename in `workouts/` directory |
-| `name` | No | Display name (defaults to filename) |
-| `description` | No | Shown below name in workout list |
-
-### Active Workout Rule
-
-- The `workouts` array should contain **exactly one entry** (the current workout)
-- Old `.txt` files stay in the `workouts/` directory as an archive — do NOT delete them
-- To change the active workout: replace the single array entry, don't append
+All workout files in the directory are included automatically. If only one workout exists, the app auto-loads it (no selection screen).
 
 ---
 
 ## Adding a Workout — Step by Step
 
 1. **Create the file:** `workouts/<kebab-case-name>.txt`
-2. **Update the manifest:** Replace the `workouts` array with a single entry pointing to the new file
-3. **Commit both files** with message: `Add workout: <Workout Name>`
-4. **Push to `main`** — the app is served via GitHub Pages from main
+2. **Include a `WORKOUT:` line** for the display name and optionally a `DESCRIPTION:` line
+3. **Commit and push** with message: `Add workout: <Workout Name>`
+4. The manifest is auto-updated by GitHub Actions — no manual manifest editing needed
 
 ---
 

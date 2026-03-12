@@ -1,3 +1,39 @@
 {
-  "workouts": []
+  "workouts": [
+    {
+      "file": "OTF_Mar10_Incline_Power.txt",
+      "name": "OTF 3/10 -- Incline Power",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar2_ESP_Builds.txt",
+      "name": "OTF 3/2 -- ESP Builds",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar3_Endurance_Mirror.txt",
+      "name": "OTF 3/3 -- Endurance Mirror",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar6_Endurance_Pyramid.txt",
+      "name": "OTF 3/6 -- Endurance Pyramid",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar7_Power_Day.txt",
+      "name": "OTF 3/7 -- Power Day",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar9_Endurance_Builds.txt",
+      "name": "OTF 3/9 -- Endurance Builds",
+      "description": ""
+    },
+    {
+      "file": "tempo-run.txt",
+      "name": "Tempo Run",
+      "description": ""
+    }
+  ]
 }

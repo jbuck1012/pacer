@@ -468,6 +468,11 @@ function parseWorkout(text) {
       continue;
     }
 
+    // DESCRIPTION (metadata, ignored by parser)
+    if (raw.toUpperCase().startsWith('DESCRIPTION:')) {
+      continue;
+    }
+
     // REPEAT
     if (raw.toUpperCase().startsWith('REPEAT:')) {
       const n = parseInt(raw.slice(raw.indexOf(':') + 1).trim(), 10);
