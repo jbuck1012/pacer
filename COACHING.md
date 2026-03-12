@@ -51,12 +51,12 @@ TYPE: M:SS | Zone | Pace | Cue
 |------|-------|-------------|
 | `WARMUP` | Blue | Opening easy effort |
 | `COOLDOWN` | Blue | Closing easy effort |
-| `BASE` | Amber | Steady aerobic effort |
-| `PUSH` | Red | Sustained hard effort (tempo) |
+| `BASE` | Blue | Steady aerobic effort |
+| `PUSH` | Orange | Sustained hard effort (tempo) |
 | `INTERVAL` | Orange | Structured speed work |
 | `RECOVERY` | Green | Easy effort between hard blocks |
 | `REST` | Green | Complete rest / walk |
-| `ALL-OUT` | Purple | Maximum effort sprint |
+| `ALL-OUT` | Red | Maximum effort sprint |
 
 Types are **case-insensitive** in the file but stored uppercase internally.
 
