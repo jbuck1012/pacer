@@ -1141,8 +1141,8 @@ function startWorkout() {
 function announceBlock(idx) {
   const b = currentWorkout.blocks[idx];
   if (!b) return;
-  const paceSpoken = speakPace(b.pace);
-  speak(`${b.type.replace('-', ' ')}. ${paceSpoken}.`);
+  const dur = fmtDuration(b.duration);
+  speak(`${b.type.replace('-', ' ')}. ${dur}. ${b.cue || ''}`.trim());
 }
 
 function updateWorkoutUI(blockIdx, remaining) {
