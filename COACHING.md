@@ -26,7 +26,7 @@ DESCRIPTION: Sustained threshold effort with warmup and cooldown
 THRESHOLD: 9:30/mile
 ```
 
-- `WORKOUT: <name>` — Display name (defaults to "Untitled Workout" if omitted)
+- `WORKOUT: <name>` — Display name (optional; defaults to title-cased filename, e.g. `tempo-run.txt` → "Tempo Run")
 - `DESCRIPTION: <text>` — Short description shown in the workout list (optional, used by auto-manifest)
 - `THRESHOLD: <value>` — Informational threshold pace (optional)
 

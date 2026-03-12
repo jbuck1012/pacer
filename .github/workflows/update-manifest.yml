@@ -28,7 +28,8 @@ jobs:
 
           const workouts = files.map(file => {
             const content = fs.readFileSync(path.join(dir, file), 'utf8');
-            let name = file;
+            // Default name from filename: "tempo-run.txt" → "Tempo Run"
+            let name = file.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
             let description = '';
             for (const line of content.split('\n')) {
               const trimmed = line.trim();
