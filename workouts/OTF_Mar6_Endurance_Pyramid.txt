@@ -1,0 +1,22 @@
+# ~26 minutes total
+# OTF 3/6/26 - Endurance Pyramid
+# Descending tread efforts: 5-4-3-2-1 minutes
+# Goal: Maintain or increase pace as duration drops
+WORKOUT: OTF 3/6 -- Endurance Pyramid
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+PUSH: 5:00 | Push | ~9:30/mile | Five minutes, set a strong pace
+RECOVERY: 1:30 | Recovery | Walk | Ninety second walking recovery
+PUSH: 4:00 | Push | ~9:20/mile | Four minutes, a touch faster
+RECOVERY: 1:30 | Recovery | Walk | Ninety seconds recovery
+PUSH: 3:00 | Push | ~9:10/mile | Three minutes, keep building
+RECOVERY: 1:30 | Recovery | Walk | Recovery
+PUSH: 2:00 | Push | ~9:00/mile | Two minutes, pick it up
+RECOVERY: 1:30 | Recovery | Walk | Recovery
+PUSH: 1:00 | Push | ~8:45/mile | One minute, fastest effort
+RECOVERY: 1:30 | Recovery | Walk | Recovery
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Finisher, thirty seconds max
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

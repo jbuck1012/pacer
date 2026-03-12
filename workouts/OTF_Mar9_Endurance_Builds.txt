@@ -1,0 +1,27 @@
+# ~25 minutes total (2 blocks)
+# OTF 3/9/26 - Endurance Builds
+# Block 1: Increase push paces as duration decreases
+# Block 2: Increase base pace, maintain push
+WORKOUT: OTF 3/9 -- Endurance Builds
+THRESHOLD: 9:30/mile
+
+# Block 1
+PUSH: 3:00 | Push | ~9:30/mile | Three minute push, find your rhythm
+BASE: 1:00 | Base | ~11:00/mile | One minute base
+PUSH: 2:00 | Push | ~9:15/mile | Two minutes, a little faster
+BASE: 1:00 | Base | ~11:00/mile | One minute base
+PUSH: 1:00 | Push | ~9:00/mile | One minute push, pick it up
+BASE: 1:30 | Base | ~11:00/mile | Ninety seconds base
+ALL-OUT: 1:00 | All-Out | ~8:00/mile | One minute all out
+RECOVERY: 2:00 | Recovery | Walk | Two minute walking recovery
+
+# Block 2
+PUSH: 1:00 | Push | ~9:00/mile | One minute push
+BASE: 3:00 | Base | ~10:30/mile | Three minutes, bump that base up
+PUSH: 1:00 | Push | ~9:00/mile | One minute push, same pace
+BASE: 2:00 | Base | ~10:15/mile | Two minutes, push that base higher
+PUSH: 1:00 | Push | ~9:00/mile | One minute push
+BASE: 1:30 | Base | ~10:00/mile | Ninety seconds, fastest base yet
+ALL-OUT: 1:00 | All-Out | ~7:45/mile | Finisher, leave it all here
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Bring it down
