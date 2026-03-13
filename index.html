@@ -281,6 +281,25 @@ body {
   gap: 8px; min-width: 0;
 }
 
+/* ─── PWA Install Banner ─── */
+.pwa-banner {
+  background: var(--surface2); border: 1px solid #333; border-radius: 12px;
+  padding: 14px 16px; margin: 0 16px 12px; display: flex; align-items: flex-start; gap: 12px;
+}
+.pwa-banner-icon { font-size: 28px; flex-shrink: 0; line-height: 1; }
+.pwa-banner-text { flex: 1; }
+.pwa-banner-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.pwa-banner-desc { font-size: 13px; color: var(--text-dim); line-height: 1.4; }
+.pwa-banner-close {
+  background: none; border: none; color: var(--text-dim); font-size: 20px;
+  cursor: pointer; padding: 0 4px; line-height: 1; flex-shrink: 0;
+}
+.pwa-banner-btn {
+  display: inline-block; margin-top: 8px; padding: 6px 14px;
+  background: var(--accent); color: #000; border: none; border-radius: 8px;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+}
+
 /* ─── Landscape split view ─── */
 @media (orientation: landscape) {
   .workout-body { flex-direction: row; padding: 8px 16px; }
@@ -331,6 +350,15 @@ body {
 <div id="load-screen" class="screen active">
   <div class="header">
     <h1>PACER</h1>
+  </div>
+  <div id="pwa-banner" class="pwa-banner" style="display:none;">
+    <div class="pwa-banner-icon">📲</div>
+    <div class="pwa-banner-text">
+      <div class="pwa-banner-title">Add PACER to your home screen</div>
+      <div class="pwa-banner-desc" id="pwa-banner-desc">Get fullscreen workouts with no browser bars.</div>
+      <button class="pwa-banner-btn" id="pwa-install-btn" style="display:none;">Install</button>
+    </div>
+    <button class="pwa-banner-close" id="pwa-banner-close">&times;</button>
   </div>
   <div class="body">
     <!-- Repo workouts section -->
@@ -1390,6 +1418,53 @@ async function loadRepoWorkout(file) {
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(() => {});
 }
+
+// ═══════════════════════════════════════════════════
+// PWA INSTALL BANNER
+// ═══════════════════════════════════════════════════
+(function initPwaBanner() {
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+    || window.navigator.standalone === true;
+  const dismissed = localStorage.getItem('pacer-pwa-dismissed');
+  if (isStandalone || dismissed) return;
+
+  const banner = document.getElementById('pwa-banner');
+  const desc = document.getElementById('pwa-banner-desc');
+  const installBtn = document.getElementById('pwa-install-btn');
+  const closeBtn = document.getElementById('pwa-banner-close');
+  let deferredPrompt = null;
+
+  // Detect iOS
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  if (isIOS) {
+    desc.innerHTML = 'Tap <strong>Share</strong> ↗ then <strong>Add to Home Screen</strong> for fullscreen workouts.';
+  }
+
+  // Android/Chrome install prompt
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'inline-block';
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const result = await deferredPrompt.userChoice;
+    if (result.outcome === 'accepted') {
+      banner.style.display = 'none';
+      localStorage.setItem('pacer-pwa-dismissed', '1');
+    }
+    deferredPrompt = null;
+  });
+
+  closeBtn.addEventListener('click', () => {
+    banner.style.display = 'none';
+    localStorage.setItem('pacer-pwa-dismissed', '1');
+  });
+
+  banner.style.display = 'flex';
+})();
 
 // ═══════════════════════════════════════════════════
 // INIT
