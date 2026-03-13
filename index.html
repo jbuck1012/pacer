@@ -18,6 +18,7 @@
   --text: #f0f0f5;
   --text-dim: #8888a0;
   --blue: #3b82f6;
+  --yellow: #eab308;
   --amber: #f59e0b;
   --red: #ef4444;
   --orange: #f97316;
@@ -195,7 +196,7 @@ body {
   letter-spacing: 0.5px; min-width: 72px;
 }
 .preview-block-dur { font-size: 14px; font-weight: 600; min-width: 44px; }
-.preview-block-pace { font-size: 13px; color: var(--text-dim); flex: 1; }
+.preview-block-pace { display: none; }
 .preview-block-cue { font-size: 12px; color: var(--text-dim); font-style: italic; }
 
 .repeat-bracket {
@@ -229,19 +230,19 @@ body {
 }
 
 .workout-block-label {
-  font-size: 18px; font-weight: 700; text-transform: uppercase;
+  font-size: 28px; font-weight: 700; text-transform: uppercase;
   letter-spacing: 2px; padding: 6px 20px; border-radius: 8px;
 }
 
 .workout-zone { font-size: 15px; color: var(--text-dim); margin-top: 2px; }
 
 .workout-timer {
-  font-size: 96px; font-weight: 800; font-variant-numeric: tabular-nums;
+  font-size: 120px; font-weight: 800; font-variant-numeric: tabular-nums;
   letter-spacing: -2px; line-height: 1;
   margin: 8px 0;
 }
 
-.workout-pace { font-size: 22px; font-weight: 600; }
+.workout-pace { display: none; }
 
 .workout-cue {
   font-size: 16px; color: var(--text-dim); font-style: italic;
@@ -254,7 +255,7 @@ body {
 
 .workout-elapsed {
   display: flex; gap: 16px; margin-top: 12px;
-  font-size: 13px; color: var(--text-dim);
+  font-size: 16px; color: var(--text-dim);
   font-variant-numeric: tabular-nums;
 }
 .workout-elapsed span { white-space: nowrap; }
@@ -264,15 +265,37 @@ body {
   padding: 12px 16px; display: flex; align-items: center; gap: 12px;
   border-top: 1px solid #222;
 }
-.workout-next-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
-.workout-next-info { font-size: 15px; font-weight: 500; }
-.workout-next-dur { font-size: 14px; color: var(--text-dim); margin-left: auto; }
+.workout-next-label { font-size: 14px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+.workout-next-info { font-size: 22px; font-weight: 700; }
+.workout-next-dur { font-size: 20px; font-weight: 600; color: var(--text-dim); margin-left: auto; }
 
 .workout-controls {
   flex-shrink: 0; display: flex; gap: 10px;
   padding: 12px 16px; padding-bottom: calc(24px + var(--safe-bottom));
 }
 .workout-controls .btn { flex: 1; }
+
+.workout-current {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; min-width: 0;
+}
+
+/* ─── Landscape split view ─── */
+@media (orientation: landscape) {
+  .workout-body { flex-direction: row; padding: 8px 16px; }
+  .workout-current { flex: 1; }
+  .workout-next {
+    flex: 0 0 35%; border-top: none; border-left: 1px solid #222;
+    flex-direction: column; align-items: flex-start;
+    justify-content: center; padding: 16px 24px;
+  }
+  .workout-next-dur { margin-left: 0; margin-top: 8px; }
+  .workout-timer { font-size: 80px; }
+  .workout-next-info { font-size: 28px; }
+  .workout-next-dur { font-size: 24px; }
+  .workout-controls { padding: 8px 16px; padding-bottom: calc(12px + var(--safe-bottom)); }
+}
 
 /* ─── Complete overlay ─── */
 .complete-overlay {
@@ -375,23 +398,25 @@ COOLDOWN: 3:00 | Easy | ~12:00/mile | Cool down"></textarea>
   <div class="accent-bar" id="accent-bar"></div>
   <div class="audio-banner" id="audio-banner">Audio cues unavailable – running in visual-only mode</div>
   <div class="workout-body">
-    <div class="workout-block-label" id="w-block-label"></div>
-    <div class="workout-zone" id="w-zone"></div>
-    <div class="workout-timer" id="w-timer">0:00</div>
-    <div class="workout-pace" id="w-pace"></div>
-    <div class="workout-cue" id="w-cue"></div>
-    <div class="workout-progress" id="w-progress"></div>
-    <div class="workout-elapsed" id="w-elapsed">
-      <span id="w-elapsed-time">Elapsed: 0:00</span>
-      <span id="w-remaining-time">Remaining: 0:00</span>
+    <div class="workout-current">
+      <div class="workout-block-label" id="w-block-label"></div>
+      <div class="workout-zone" id="w-zone"></div>
+      <div class="workout-timer" id="w-timer">0:00</div>
+      <div class="workout-pace" id="w-pace"></div>
+      <div class="workout-cue" id="w-cue"></div>
+      <div class="workout-progress" id="w-progress"></div>
+      <div class="workout-elapsed" id="w-elapsed">
+        <span id="w-elapsed-time">Elapsed: 0:00</span>
+        <span id="w-remaining-time">Remaining: 0:00</span>
+      </div>
     </div>
-  </div>
-  <div class="workout-next" id="w-next">
-    <div>
-      <div class="workout-next-label">Up Next</div>
-      <div class="workout-next-info" id="w-next-info"></div>
+    <div class="workout-next" id="w-next">
+      <div>
+        <div class="workout-next-label">Up Next</div>
+        <div class="workout-next-info" id="w-next-info"></div>
+      </div>
+      <div class="workout-next-dur" id="w-next-dur"></div>
     </div>
-    <div class="workout-next-dur" id="w-next-dur"></div>
   </div>
   <div class="workout-controls">
     <button class="btn btn-secondary" id="end-btn">End</button>
@@ -425,7 +450,7 @@ COOLDOWN: 3:00 | Easy | ~12:00/mile | Cool down"></textarea>
 const BLOCK_COLORS = {
   WARMUP:   'var(--blue)',
   COOLDOWN: 'var(--blue)',
-  BASE:     'var(--blue)',
+  BASE:     'var(--yellow)',
   PUSH:     'var(--orange)',
   INTERVAL: 'var(--orange)',
   RECOVERY: 'var(--green)',
@@ -434,7 +459,7 @@ const BLOCK_COLORS = {
 };
 
 const BLOCK_HEX = {
-  WARMUP:   '#3b82f6', COOLDOWN: '#3b82f6', BASE: '#3b82f6',
+  WARMUP:   '#3b82f6', COOLDOWN: '#3b82f6', BASE: '#eab308',
   PUSH:     '#f97316', INTERVAL: '#f97316', RECOVERY: '#22c55e',
   REST:     '#22c55e', 'ALL-OUT': '#ef4444',
 };
@@ -1173,7 +1198,7 @@ function updateWorkoutUI(blockIdx, remaining) {
   const next = w.blocks[blockIdx + 1];
   if (next) {
     $wNext.style.display = 'flex';
-    $wNextInfo.textContent = `${next.type} – ${next.pace}`;
+    $wNextInfo.textContent = next.type;
     $wNextDur.textContent = fmtDuration(next.duration);
   } else {
     $wNext.style.display = 'flex';
