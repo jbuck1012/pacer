@@ -1,0 +1,23 @@
+# ~18 minutes total (tread portion of 200m Row Benchmark day)
+# OTF 3/18/26 - Distance Challenge (200m Row Benchmark day)
+# Two 6.5-min distance runs, goal is to match or beat Block 1 in Block 2
+# Self-paced with progressive builds
+WORKOUT: OTF 3/18 -- Distance Challenge
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Block 1 - 6.5 minute distance run
+BASE: 2:00 | Base | ~10:30/mile | Start steady
+PUSH: 2:00 | Push | ~9:15/mile | Build into push
+PUSH: 1:30 | Push | ~9:00/mile | Pick it up
+ALL-OUT: 1:00 | All-Out | ~7:45/mile | Finish strong, check distance
+RECOVERY: 1:30 | Recovery | Walk | Recovery, remember your distance
+
+# Block 2 - 6.5 minute distance run (match or beat Block 1)
+BASE: 1:30 | Base | ~10:15/mile | Start a little faster
+PUSH: 2:00 | Push | ~9:15/mile | Push pace
+PUSH: 2:00 | Push | ~9:00/mile | Build every minute
+ALL-OUT: 1:00 | All-Out | ~7:30/mile | Beat your distance
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

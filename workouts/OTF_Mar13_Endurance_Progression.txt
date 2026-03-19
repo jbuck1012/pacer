@@ -1,0 +1,30 @@
+# ~22 minutes total
+# OTF 3/13/26 - Endurance Progression
+# Block 1: 8-min run with 2-min pace increases
+# Block 2: Pyramid pushes with base recovery
+# Goal: Choose own speed, increase every 2 minutes for 1 min, return
+WORKOUT: OTF 3/13 -- Endurance Progression
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Block 1 - Self-paced progression (8 minutes)
+BASE: 2:00 | Base | ~10:45/mile | Two minute base, find your rhythm
+PUSH: 1:00 | Push | ~9:30/mile | Pick it up for one minute
+BASE: 2:00 | Base | ~10:45/mile | Return to base
+PUSH: 1:00 | Push | ~9:15/mile | Increase again, one minute
+BASE: 1:00 | Base | ~10:45/mile | Back to base
+PUSH: 1:00 | Push | ~9:00/mile | Last increase, push harder
+RECOVERY: 1:30 | Recovery | Walk | Ninety seconds recovery
+
+# Block 2 - Push pyramid
+PUSH: 1:00 | Push | ~9:15/mile | One minute push
+BASE: 0:45 | Base | ~10:30/mile | Base
+PUSH: 1:30 | Push | ~9:15/mile | Ninety second push
+BASE: 0:45 | Base | ~10:30/mile | Base
+PUSH: 2:00 | Push | ~9:15/mile | Two minute push, the peak
+BASE: 0:45 | Base | ~10:30/mile | Base
+PUSH: 1:00 | Push | ~9:00/mile | One minute, strong finish
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Thirty second all out
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

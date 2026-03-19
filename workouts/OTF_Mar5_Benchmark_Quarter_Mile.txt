@@ -1,0 +1,22 @@
+# ~15 minutes total
+# OTF 3/5/26 - .25 Mile Benchmark Day
+# Warmup, benchmark sprint, then push/all-out combos
+WORKOUT: OTF 3/5 -- .25 Mile Benchmark
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Benchmark attempt - ~90 seconds for most runners
+ALL-OUT: 1:30 | All-Out | ~7:00/mile | Quarter mile benchmark, go!
+RECOVERY: 2:00 | Recovery | Walk | Walking recovery
+
+# Post-benchmark work
+PUSH: 1:00 | Push | ~9:00/mile | One minute push
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Thirty seconds all out
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+PUSH: 0:45 | Push | ~8:45/mile | Forty-five push
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | All out
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+ALL-OUT: 0:30 | All-Out | ~7:15/mile | Final all out
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

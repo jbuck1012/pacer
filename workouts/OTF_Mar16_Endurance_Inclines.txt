@@ -1,0 +1,34 @@
+# ~23 minutes total
+# OTF 3/16/26 - Endurance Incline Surges (Monday)
+# Three long runs separated by 90s incline surges
+# Goal: Maintain paces, increase incline on surges then return
+WORKOUT: OTF 3/16 -- Endurance Inclines
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Run 1 - 5.5 minutes
+BASE: 2:00 | Base | ~10:45/mile | Two minute base
+PUSH: 2:00 | Push | ~9:15/mile | Two minute push
+BASE: 1:30 | Base | ~10:45/mile | Back to base
+
+# Incline Surge 1
+PUSH: 1:30 | Push 4% | ~10:00/mile | Ninety seconds at four percent
+
+# Run 2 - 6.5 minutes
+BASE: 2:00 | Base | ~10:30/mile | Base, flat road
+PUSH: 2:30 | Push | ~9:15/mile | Two and a half push
+BASE: 2:00 | Base | ~10:30/mile | Base
+
+# Incline Surge 2
+PUSH: 1:30 | Push 5% | ~10:15/mile | Ninety seconds at five percent
+
+# Run 3 - 6.5 minutes
+BASE: 2:00 | Base | ~10:30/mile | Base
+PUSH: 3:00 | Push | ~9:15/mile | Three minute push, longest one
+BASE: 1:30 | Base | ~10:30/mile | Base
+
+# Finisher - Incline Surge 3
+PUSH: 1:30 | Push 6% | ~10:30/mile | Final surge at six percent
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

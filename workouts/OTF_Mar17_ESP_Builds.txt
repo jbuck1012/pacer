@@ -1,0 +1,37 @@
+# ~25 minutes total
+# OTF 3/17/26 - ESP Builds (Repeat of 3/2)
+# Three builds: Base-Push-AO with decreasing duration each build
+# Goal: Increase all-out intensity each build
+WORKOUT: OTF 3/17 -- ESP Builds
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Build 1
+BASE: 3:00 | Base | ~11:00/mile | Three minute base
+PUSH: 1:30 | Push | ~9:15/mile | Ninety second push
+ALL-OUT: 1:00 | All-Out | ~7:45/mile | One minute all out
+RECOVERY: 1:00 | Recovery | Walk | Walking recovery
+
+# Build 2
+BASE: 2:00 | Base | ~10:45/mile | Two minute base
+PUSH: 1:00 | Push | ~9:00/mile | One minute push
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Forty-five all out
+RECOVERY: 1:00 | Recovery | Walk | Walking recovery
+
+# Build 3
+BASE: 1:00 | Base | ~10:30/mile | One minute base
+PUSH: 0:30 | Push | ~8:45/mile | Thirty second push
+ALL-OUT: 0:30 | All-Out | ~7:15/mile | Thirty seconds all out
+RECOVERY: 1:30 | Recovery | Walk | Ninety seconds, get ready
+
+# All-Out Challenge - 4 rounds
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Forty-five all out, round one
+RECOVERY: 1:00 | Recovery | Walk | Recover
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Round two
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Round three
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+ALL-OUT: 0:45 | All-Out | ~7:15/mile | Last round, best effort
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down
