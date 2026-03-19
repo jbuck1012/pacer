@@ -1,0 +1,31 @@
+# ~14 minutes total (tread block only)
+# OTF 3/11/26 - Incline Strength
+# Progressive inclines with decreasing intervals: 1min, 45s, 30s rounds
+# Goal: Accumulate distance
+WORKOUT: OTF 3/11 -- Incline Strength
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Round 1 - 1 minute intervals
+BASE: 1:00 | Base 3% | ~11:00/mile | One minute at three percent
+BASE: 1:00 | Base 4% | ~11:00/mile | Four percent
+BASE: 1:00 | Base 5% | ~11:15/mile | Five percent
+BASE: 1:00 | Base | ~10:45/mile | Flat base, recover
+
+# Round 2 - 45 second intervals
+BASE: 0:45 | Base 4% | ~11:00/mile | Forty-five at four percent
+BASE: 0:45 | Base 5% | ~11:15/mile | Five percent
+BASE: 0:45 | Base 6% | ~11:30/mile | Six percent
+BASE: 1:00 | Base | ~10:45/mile | Flat base
+
+# Round 3 - 30 second intervals
+BASE: 0:30 | Base 5% | ~11:15/mile | Thirty at five percent
+BASE: 0:30 | Base 6% | ~11:30/mile | Six percent
+BASE: 0:30 | Base 7% | ~11:45/mile | Seven percent, highest incline
+BASE: 1:00 | Base | ~10:45/mile | Flat base
+
+# Finisher
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Forty-five all out, check your distance
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

@@ -1,0 +1,32 @@
+# ~23 minutes total
+# OTF 3/15/26 - Power All-Outs (Sunday)
+# 90s push buy-in, then repeated 30s all-outs with 3-min walking recovery
+# Goal: Increase all-out pace each round
+WORKOUT: OTF 3/15 -- Power All-Outs
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Buy-in
+PUSH: 1:30 | Push | ~9:15/mile | Ninety second push buy-in
+
+# Round 1
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Thirty seconds all out
+BASE: 3:00 | Base | ~10:45/mile | Three minute base, recover to green
+
+# Round 2
+ALL-OUT: 0:30 | All-Out | ~7:15/mile | Increase your speed
+BASE: 3:00 | Base | ~10:45/mile | Base, get back to green
+
+# Round 3
+ALL-OUT: 0:30 | All-Out | ~7:15/mile | Faster than last round
+BASE: 3:00 | Base | ~10:45/mile | Base recovery
+
+# Round 4
+ALL-OUT: 0:30 | All-Out | ~7:00/mile | Even faster
+BASE: 3:00 | Base | ~10:45/mile | Base recovery
+
+# Round 5 - Finisher
+ALL-OUT: 0:30 | All-Out | ~7:00/mile | Best effort, last one
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

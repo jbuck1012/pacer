@@ -1,0 +1,26 @@
+# ~19 minutes total (tread portions only)
+# OTF 3/14/26 - Endurance Push Repeats (Tread/Row day)
+# 4 rounds of 3-min push with transitions
+# Goal: Maintain tread intensity each round
+WORKOUT: OTF 3/14 -- Push Repeats
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Round 1
+PUSH: 3:00 | Push | ~9:15/mile | Three minute push, set your pace
+RECOVERY: 0:45 | Recovery | Walk | Transition recovery
+
+# Round 2
+PUSH: 3:00 | Push | ~9:15/mile | Three minutes, match your pace
+RECOVERY: 0:45 | Recovery | Walk | Transition recovery
+
+# Round 3
+PUSH: 3:00 | Push | ~9:00/mile | Three minutes, hold it strong
+RECOVERY: 0:45 | Recovery | Walk | Transition recovery
+
+# Round 4
+PUSH: 3:00 | Push | ~9:00/mile | Last round, best effort
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Finish strong
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down
