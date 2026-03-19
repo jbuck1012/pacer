@@ -6,6 +6,51 @@
       "description": ""
     },
     {
+      "file": "OTF_Mar11_Incline_Strength.txt",
+      "name": "OTF 3/11 -- Incline Strength",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar12_Power_Escalating.txt",
+      "name": "OTF 3/12 -- Power Escalating",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar13_Endurance_Progression.txt",
+      "name": "OTF 3/13 -- Endurance Progression",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar14_Endurance_Push_Repeats.txt",
+      "name": "OTF 3/14 -- Push Repeats",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar15_Power_All_Outs.txt",
+      "name": "OTF 3/15 -- Power All-Outs",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar16_Endurance_Inclines.txt",
+      "name": "OTF 3/16 -- Endurance Inclines",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar17_ESP_Builds.txt",
+      "name": "OTF 3/17 -- ESP Builds",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar18_Distance_Challenge.txt",
+      "name": "OTF 3/18 -- Distance Challenge",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar19_Power_Day.txt",
+      "name": "OTF 3/19 -- Power Day",
+      "description": ""
+    },
+    {
       "file": "OTF_Mar2_ESP_Builds.txt",
       "name": "OTF 3/2 -- ESP Builds",
       "description": ""
@@ -16,6 +61,11 @@
       "description": ""
     },
     {
+      "file": "OTF_Mar5_Benchmark_Quarter_Mile.txt",
+      "name": "OTF 3/5 -- .25 Mile Benchmark",
+      "description": ""
+    },
+    {
       "file": "OTF_Mar6_Endurance_Pyramid.txt",
       "name": "OTF 3/6 -- Endurance Pyramid",
       "description": ""
@@ -23,6 +73,11 @@
     {
       "file": "OTF_Mar7_Power_Day.txt",
       "name": "OTF 3/7 -- Power Day",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar8_Strength_Endurance.txt",
+      "name": "OTF 3/8 -- Strength Endurance",
       "description": ""
     },
     {
