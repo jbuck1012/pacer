@@ -1,0 +1,29 @@
+# ~10.5 minutes total (one block -- run it twice for full OTF session)
+# OTF 3/11/26 -- Incline Ladder Distance Challenge
+# Goal: Accumulate as much distance as possible
+WORKOUT: OTF 3-11 Incline Ladder
+THRESHOLD: 9:30/mile
+
+WARMUP: 2:00 | Easy | ~12:00/mile | Get moving
+
+# Ladder 1 -- 1 min intervals, climbing incline
+BASE: 1:00 | Base @ 3% | ~10:00/mile | First hill
+BASE: 1:00 | Base @ 4% | ~10:00/mile | Steeper now
+BASE: 1:00 | Base @ 5% | ~10:00/mile | Keep pushing
+BASE: 1:00 | Base | ~10:00/mile | Flat, recover the legs
+
+# Ladder 2 -- 45s intervals, steeper
+PUSH: 0:45 | Push @ 4% | ~9:30/mile | Shorter, harder
+PUSH: 0:45 | Push @ 5% | ~9:30/mile | Stay strong
+PUSH: 0:45 | Push @ 6% | ~9:15/mile | Grind it
+BASE: 1:00 | Base | ~10:00/mile | Flat again, breathe
+
+# Ladder 3 -- 30s intervals, steepest
+PUSH: 0:30 | Push @ 5% | ~9:00/mile | Quick hit
+PUSH: 0:30 | Push @ 6% | ~9:00/mile | Dig in
+PUSH: 0:30 | Push @ 7% | ~8:45/mile | Almost done
+BASE: 1:00 | Base | ~10:00/mile | Last flat
+
+# Finisher
+ALL-OUT: 0:45 | All-Out | ~8:00/mile | Leave it all here
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Walk it off

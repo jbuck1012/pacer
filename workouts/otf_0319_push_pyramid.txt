@@ -1,0 +1,34 @@
+# ~23.5 minutes total
+# OTF 3/19/26 -- Push Pyramid: Up and Back Down
+# Goal: Maintain push intensity throughout
+WORKOUT: OTF 3-19 Push Pyramid
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Ascending
+PUSH: 1:00 | Push | ~9:00/mile | Short opener
+BASE: 0:45 | Base | ~10:00/mile | Quick base
+PUSH: 1:30 | Push | ~9:00/mile | Building up
+BASE: 0:45 | Base | ~10:00/mile | Quick base
+PUSH: 2:00 | Push | ~9:00/mile | Two minutes now
+BASE: 0:45 | Base | ~10:00/mile | Quick base
+PUSH: 2:30 | Push | ~9:15/mile | Getting long
+BASE: 0:45 | Base | ~10:00/mile | Quick base
+
+# Peak
+PUSH: 3:00 | Push | ~9:15/mile | Top of the pyramid, hold on
+BASE: 0:45 | Base | ~10:00/mile | Quick base
+
+# Descending
+PUSH: 2:30 | Push | ~9:15/mile | Coming back down
+BASE: 0:45 | Base | ~10:00/mile | Quick base
+PUSH: 2:00 | Push | ~9:00/mile | Shorter now
+BASE: 0:45 | Base | ~10:00/mile | Quick base
+PUSH: 1:30 | Push | ~9:00/mile | Almost done
+BASE: 0:45 | Base | ~10:00/mile | Last base
+PUSH: 1:00 | Push | ~9:00/mile | Final push
+
+# Finisher
+ALL-OUT: 0:30 | All-Out | Max effort | Everything left
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool it down

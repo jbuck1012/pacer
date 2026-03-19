@@ -1,0 +1,43 @@
+# ~23 minutes total
+# OTF 3/15/26 -- All-Out Power: 7x30s with Walking Recovery
+# Goal: Increase all-out pace each round
+WORKOUT: OTF 3-15 All-Out Repeats
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Buy-in
+PUSH: 1:30 | Push | ~9:00/mile | Buy-in push
+
+# Round 1
+ALL-OUT: 0:30 | All-Out | ~7:45/mile | First one, find your gear
+REST: 1:30 | Rest | Walk | Walk, get to green
+BASE: 1:30 | Base | ~10:00/mile | Return to base
+
+# Round 2
+ALL-OUT: 0:30 | All-Out | ~7:40/mile | A tick faster
+REST: 1:30 | Rest | Walk | Walk it off
+BASE: 1:30 | Base | ~10:00/mile | Return to base
+
+# Round 3
+ALL-OUT: 0:30 | All-Out | ~7:35/mile | Keep building
+REST: 1:30 | Rest | Walk | Walk it off
+BASE: 1:30 | Base | ~10:00/mile | Return to base
+
+# Round 4
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Halfway, stay honest
+REST: 1:30 | Rest | Walk | Walk it off
+BASE: 1:30 | Base | ~10:00/mile | Return to base
+
+# Round 5
+ALL-OUT: 0:30 | All-Out | ~7:25/mile | Dig deeper
+REST: 1:30 | Rest | Walk | Walk it off
+BASE: 1:30 | Base | ~10:00/mile | Return to base
+
+# Round 6
+ALL-OUT: 0:30 | All-Out | ~7:20/mile | Second to last
+REST: 1:30 | Rest | Walk | Last recovery
+
+# Finisher
+ALL-OUT: 0:30 | All-Out | Max effort | Empty the tank
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Done, walk it down

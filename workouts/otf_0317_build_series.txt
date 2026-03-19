@@ -1,0 +1,37 @@
+# ~23 minutes total
+# OTF 3/17/26 -- Builds: Shrinking Base, Growing Intensity
+# Goal: Increase all-out intensity each build
+WORKOUT: OTF 3-17 Build Series
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Build 1 -- longest base, longest push
+BASE: 3:00 | Base | ~10:00/mile | Long base, settle in
+PUSH: 1:30 | Push | ~9:00/mile | Controlled push
+ALL-OUT: 1:00 | All-Out | ~7:45/mile | First all-out
+RECOVERY: 1:00 | Recovery | Walk | Walk recovery
+
+# Build 2 -- shorter everything
+BASE: 2:00 | Base | ~10:00/mile | Shorter base
+PUSH: 1:00 | Push | ~9:00/mile | Quicker transition
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Faster this time
+RECOVERY: 1:00 | Recovery | Walk | Walk recovery
+
+# Build 3 -- shortest, hardest
+BASE: 1:00 | Base | ~10:00/mile | Minimal base
+PUSH: 0:30 | Push | ~8:45/mile | Quick ramp
+ALL-OUT: 0:30 | All-Out | ~7:15/mile | Max effort
+REST: 1:30 | Rest | Walk | Full recovery
+
+# Block 2 -- repeat the pattern
+BASE: 3:00 | Base | ~10:00/mile | Reset, long base
+PUSH: 1:30 | Push | ~9:00/mile | Controlled push
+ALL-OUT: 1:00 | All-Out | ~7:45/mile | Match first round
+RECOVERY: 1:00 | Recovery | Walk | Walk recovery
+
+BASE: 2:00 | Base | ~10:00/mile | Shorter base again
+PUSH: 1:00 | Push | ~9:00/mile | Quick push
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Stay aggressive
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Walk it down

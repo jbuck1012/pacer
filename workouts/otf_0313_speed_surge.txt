@@ -1,0 +1,35 @@
+# ~23 minutes total
+# OTF 3/13/26 -- Speed Surge + All-Out Finishers
+# Goal: Every 2 min, surge speed for 1 min then return
+WORKOUT: OTF 3-13 Speed Surge
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Block 1 -- surge and return
+BASE: 2:00 | Base | ~10:00/mile | Find your starting pace
+PUSH: 1:00 | Speed Surge | ~8:45/mile | Bump it up
+BASE: 2:00 | Base | ~10:00/mile | Back to start
+PUSH: 1:00 | Speed Surge | ~8:30/mile | Faster this time
+BASE: 2:00 | Base | ~10:00/mile | Return
+RECOVERY: 1:00 | Recovery | Walk | Get to green
+
+# Block 2 -- double all-out
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Full send
+REST: 0:30 | Rest | Walk | Quick recovery
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Match the first one
+RECOVERY: 1:00 | Recovery | Walk | Get to base
+
+# Block 3 -- repeat surge pattern
+BASE: 2:00 | Base | ~10:00/mile | Same starting pace
+PUSH: 1:00 | Speed Surge | ~8:45/mile | Surge
+BASE: 2:00 | Base | ~10:00/mile | Return
+PUSH: 1:00 | Speed Surge | ~8:30/mile | Faster again
+BASE: 2:00 | Base | ~10:00/mile | Return
+RECOVERY: 1:00 | Recovery | Walk | Last recovery
+
+# Block 4 -- double all-out finisher
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Second to last
+REST: 0:30 | Rest | Walk | Quick rest
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Final effort
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Walk it off

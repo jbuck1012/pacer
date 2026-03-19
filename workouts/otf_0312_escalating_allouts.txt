@@ -1,0 +1,37 @@
+# ~23 minutes total
+# OTF 3/12/26 -- Power Day: Escalating All-Outs x3 Blocks
+# Goal: Increase all-out intensity each build
+WORKOUT: OTF 3-12 Escalating All-Outs
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Block 1
+PUSH: 0:30 | Push | ~9:00/mile | Short push buy-in
+BASE: 1:00 | Base | ~10:00/mile | Settle
+ALL-OUT: 0:30 | All-Out | ~8:00/mile | First hit
+RECOVERY: 1:00 | Recovery | Walk | Recover
+ALL-OUT: 0:45 | All-Out | ~7:45/mile | Longer now
+RECOVERY: 1:00 | Recovery | Walk | Recover
+ALL-OUT: 1:00 | All-Out | ~7:30/mile | Full minute, hold on
+REST: 1:30 | Rest | Walk | Full recovery
+
+# Block 2
+PUSH: 0:45 | Push | ~9:00/mile | Longer buy-in
+BASE: 1:15 | Base | ~10:00/mile | Settle in
+ALL-OUT: 0:30 | All-Out | ~8:00/mile | Go
+RECOVERY: 1:15 | Recovery | Walk | Recover
+ALL-OUT: 0:45 | All-Out | ~7:45/mile | Push harder
+RECOVERY: 1:15 | Recovery | Walk | Recover
+ALL-OUT: 1:00 | All-Out | ~7:30/mile | Dig deep
+REST: 1:30 | Rest | Walk | Full recovery
+
+# Block 3
+PUSH: 1:00 | Push | ~9:00/mile | Longest buy-in
+BASE: 1:30 | Base | ~10:00/mile | Settle
+ALL-OUT: 0:30 | All-Out | ~8:00/mile | Here we go
+RECOVERY: 1:30 | Recovery | Walk | Recover
+ALL-OUT: 0:45 | All-Out | ~7:45/mile | Stay aggressive
+RECOVERY: 1:30 | Recovery | Walk | Recover
+ALL-OUT: 1:00 | All-Out | ~7:30/mile | Last one, everything
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Done, great work
