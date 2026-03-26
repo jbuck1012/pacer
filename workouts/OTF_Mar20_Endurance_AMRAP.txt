@@ -1,0 +1,25 @@
+# ~18 minutes total (tread portions)
+# OTF 3/20/26 - Endurance AMRAP (Repeat of 3/4)
+# Two blocks: distance runs at incline + bodyweight exercises
+# Converted distance to timed intervals
+WORKOUT: OTF 3/20 -- Endurance AMRAP
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Block 1 - 7 min AMRAP: 0.3mi @ 3-5% + squats (x2 rounds)
+PUSH: 3:00 | Push 4% | ~10:00/mile | Three minutes at four percent
+RECOVERY: 0:30 | Recovery | Walk | Quick recovery for squats
+PUSH: 3:00 | Push 4% | ~9:45/mile | Second round, match or beat
+RECOVERY: 0:30 | Recovery | Walk | Recovery
+RECOVERY: 1:00 | Recovery | Walk | One minute walking recovery
+
+# Block 2 - 7 min AMRAP: 0.2mi @ 5% + good mornings (x3 rounds)
+PUSH: 2:00 | Push 5% | ~10:15/mile | Two minutes at five percent
+RECOVERY: 0:20 | Recovery | Walk | Quick transition
+PUSH: 2:00 | Push 5% | ~10:00/mile | Second round, push harder
+RECOVERY: 0:20 | Recovery | Walk | Transition
+PUSH: 2:00 | Push 6% | ~10:30/mile | Third round at six percent
+RECOVERY: 0:20 | Recovery | Walk | Recovery
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

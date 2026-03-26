@@ -1,0 +1,31 @@
+# ~22 minutes total
+# OTF 3/21/26 - Strength Day (Saturday)
+# Incline push combos with flat all-out finishers
+WORKOUT: OTF 3/21 -- Strength Day
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Block 1 - Incline builds
+PUSH: 1:30 | Push 3% | ~9:45/mile | Ninety seconds at three percent
+PUSH: 1:00 | Push 5% | ~10:15/mile | One minute at five percent
+PUSH: 0:30 | Push 7% | ~10:30/mile | Thirty at seven percent
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | All out flat
+RECOVERY: 1:00 | Recovery | Walk | Walking recovery
+
+# Block 2 - Reverse incline
+PUSH: 0:30 | Push 6% | ~10:15/mile | Start steep
+PUSH: 1:00 | Push 4% | ~9:45/mile | Drop to four percent
+PUSH: 1:30 | Push | ~9:15/mile | Flat push, pick up speed
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | All out
+RECOVERY: 1:30 | Recovery | Walk | Full recovery
+
+# Block 3 - Speed to strength
+PUSH: 1:00 | Push | ~9:00/mile | Fast flat push
+PUSH: 1:00 | Push 4% | ~9:45/mile | Add incline
+PUSH: 1:00 | Push 6% | ~10:15/mile | Steeper
+BASE: 1:00 | Base | ~10:45/mile | One minute base
+PUSH: 0:45 | Push | ~8:45/mile | Forty-five fast
+ALL-OUT: 0:30 | All-Out | ~7:15/mile | Last all out, empty the tank
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

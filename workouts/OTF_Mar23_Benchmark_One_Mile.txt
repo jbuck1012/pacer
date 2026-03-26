@@ -1,0 +1,24 @@
+# ~17 minutes total
+# OTF 3/23/26 - 1 Mile Benchmark (Transformation Challenge Finale)
+# 3-min warmup block then 1-mile benchmark attempt
+# Goal: Complete 1 mile as fast as possible
+WORKOUT: OTF 3/23 -- 1 Mile Benchmark
+THRESHOLD: 9:30/mile
+
+# Warmup block - 3 minutes
+PUSH: 0:30 | Push | ~9:00/mile | Thirty second push
+RECOVERY: 0:45 | Recovery | Walk | Walking recovery
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Push to all out
+RECOVERY: 0:45 | Recovery | Walk | Recovery
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | All out
+RECOVERY: 1:30 | Recovery | Walk | Get to base when ready
+
+# Benchmark - 1 Mile Run
+# At threshold pace ~9:30/mile = ~9:30, at push ~9:00 = ~9:00
+# Breaking into segments for coaching cues
+PUSH: 2:30 | Push | ~9:15/mile | First quarter mile, settle in
+PUSH: 2:30 | Push | ~9:00/mile | Halfway, hold your pace
+PUSH: 2:00 | Push | ~8:45/mile | Three quarters, start building
+ALL-OUT: 2:00 | All-Out | ~8:00/mile | Last quarter, kick it in
+
+COOLDOWN: 3:00 | Easy | ~12:30/mile | Cool down, great effort

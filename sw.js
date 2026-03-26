@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pacer-v5';
+const CACHE_NAME = 'pacer-v6';
 const ASSETS = ['./', './index.html', './manifest.json', './workouts/manifest.json'];
 
 self.addEventListener('install', (e) => {

@@ -1,0 +1,43 @@
+# ~27 minutes total (3 blocks)
+# OTF 3/22/26 - Power Day (Repeat of 3/7)
+# Block 1 & 3: Push/All-Out combos with decreasing push duration
+# Block 2: Incline all-outs at 2-5%
+WORKOUT: OTF 3/22 -- Power Day
+THRESHOLD: 9:30/mile
+
+# Block 1
+PUSH: 1:30 | Push | ~9:15/mile | Ninety second push
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Thirty seconds, go hard
+RECOVERY: 1:00 | Recovery | Walk | One minute recovery
+PUSH: 1:00 | Push | ~9:00/mile | One minute push
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Thirty seconds all out
+RECOVERY: 1:00 | Recovery | Walk | One minute recovery
+PUSH: 0:30 | Push | ~8:45/mile | Thirty second push
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | All out, back to back
+RECOVERY: 1:00 | Recovery | Walk | One minute recovery
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Surprise all out
+RECOVERY: 1:30 | Recovery | Walk | Ninety seconds, catch your breath
+
+# Block 2 - Incline All-Outs
+ALL-OUT: 0:30 | All-Out 2% | ~8:00/mile | All out at two percent
+RECOVERY: 0:45 | Recovery | Walk | Forty-five seconds
+ALL-OUT: 0:30 | All-Out 3% | ~8:00/mile | All out at three percent
+RECOVERY: 0:45 | Recovery | Walk | Forty-five seconds
+ALL-OUT: 0:30 | All-Out 4% | ~8:15/mile | All out at four percent
+RECOVERY: 0:45 | Recovery | Walk | Forty-five seconds
+ALL-OUT: 0:30 | All-Out 5% | ~8:30/mile | All out at five percent
+RECOVERY: 1:30 | Recovery | Walk | Ninety seconds full recovery
+
+# Block 3 (repeat of Block 1 structure)
+PUSH: 1:30 | Push | ~9:15/mile | Ninety second push
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Thirty seconds all out
+RECOVERY: 1:00 | Recovery | Walk | One minute recovery
+PUSH: 1:00 | Push | ~9:00/mile | One minute push
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | All out
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+PUSH: 0:30 | Push | ~8:45/mile | Thirty second push
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Back to back
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+ALL-OUT: 0:30 | All-Out | ~7:15/mile | Last one, empty the tank
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool it down

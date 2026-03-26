@@ -1,0 +1,32 @@
+# ~24 minutes total (tread portions)
+# OTF 3/24/26 - Incline Ladder (Repeat of 3/8 tread/row)
+# 5 rounds: decreasing distance, increasing incline
+# Distances converted to time at push pace
+WORKOUT: OTF 3/24 -- Incline Ladder
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Round 1 - 0.5 miles @ 2%
+PUSH: 4:30 | Push 2% | ~9:30/mile | Half mile at two percent
+RECOVERY: 1:00 | Recovery | Walk | Walking recovery
+
+# Round 2 - 0.4 miles @ 4%
+PUSH: 3:45 | Push 4% | ~9:45/mile | Point four miles at four percent
+RECOVERY: 1:00 | Recovery | Walk | Walking recovery
+
+# Round 3 - 0.3 miles @ 6%
+PUSH: 3:00 | Push 6% | ~10:15/mile | Point three miles at six percent
+RECOVERY: 1:00 | Recovery | Walk | Walking recovery
+
+# Round 4 - 0.2 miles @ 8%
+PUSH: 2:00 | Push 8% | ~10:30/mile | Point two miles at eight percent
+RECOVERY: 1:00 | Recovery | Walk | Walking recovery
+
+# Round 5 - 0.1 miles @ 10%
+PUSH: 1:00 | Push 10% | ~10:45/mile | Point one at ten percent, steep
+
+# Finisher
+ALL-OUT: 1:00 | All-Out | ~7:30/mile | One minute all out, flat
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down
