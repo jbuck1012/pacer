@@ -46,8 +46,38 @@
       "description": ""
     },
     {
-      "file": "OTF_Mar19_Power_Day.txt",
-      "name": "OTF 3/19 -- Power Day",
+      "file": "OTF_Mar19_Endurance_Mirror.txt",
+      "name": "OTF 3/19 -- Endurance Mirror",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar20_Endurance_AMRAP.txt",
+      "name": "OTF 3/20 -- Endurance AMRAP",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar21_Strength_Day.txt",
+      "name": "OTF 3/21 -- Strength Day",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar22_Power_Day.txt",
+      "name": "OTF 3/22 -- Power Day",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar23_Benchmark_One_Mile.txt",
+      "name": "OTF 3/23 -- 1 Mile Benchmark",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar24_Incline_Ladder.txt",
+      "name": "OTF 3/24 -- Incline Ladder",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar25_Endurance_Builds.txt",
+      "name": "OTF 3/25 -- Endurance Builds",
       "description": ""
     },
     {
