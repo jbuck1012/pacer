@@ -1,0 +1,35 @@
+# ~23 minutes total
+# OTF 3/29/26 - ESP Day (Sunday)
+# Three blocks mixing endurance, strength, and power
+WORKOUT: OTF 3/29 -- ESP Day
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Block 1 - Endurance
+BASE: 2:00 | Base | ~10:45/mile | Two minute base
+PUSH: 2:00 | Push | ~9:15/mile | Two minute push
+PUSH: 1:00 | Push | ~9:00/mile | One minute faster
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Thirty all out
+RECOVERY: 1:00 | Recovery | Walk | Walking recovery
+
+# Block 2 - Strength (inclines)
+PUSH: 1:00 | Push 3% | ~9:45/mile | One minute at three percent
+PUSH: 1:00 | Push 5% | ~10:15/mile | Five percent
+PUSH: 0:30 | Push 7% | ~10:30/mile | Thirty at seven percent
+BASE: 1:00 | Base | ~10:45/mile | Flat base
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | All out flat
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+
+# Block 3 - Power
+PUSH: 1:00 | Push | ~9:00/mile | One minute push
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | All out
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+PUSH: 0:45 | Push | ~8:45/mile | Forty-five push
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | All out
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+PUSH: 0:30 | Push | ~8:45/mile | Thirty second push
+ALL-OUT: 0:30 | All-Out | ~7:15/mile | Last all out
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

@@ -1,0 +1,39 @@
+# ~23 minutes total (3 escalating blocks)
+# OTF 3/27/26 - Power Escalating (Repeat of 3/12)
+# Each block gets longer: 5.75, 6.75, 7.75 min
+# Push buy-in increases, all-out rounds build 30s-45s-60s
+WORKOUT: OTF 3/27 -- Power Escalating
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Block 1 - 5.75 minutes
+PUSH: 0:30 | Push | ~9:00/mile | Thirty second push buy-in
+BASE: 1:00 | Base | ~10:45/mile | One minute base
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Thirty seconds all out
+RECOVERY: 1:00 | Recovery | Walk | Walking recovery
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Forty-five all out
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+ALL-OUT: 1:00 | All-Out | ~7:45/mile | One minute all out
+RECOVERY: 1:30 | Recovery | Walk | Ninety seconds, catch your breath
+
+# Block 2 - 6.75 minutes
+PUSH: 0:45 | Push | ~9:00/mile | Forty-five push buy-in
+BASE: 1:15 | Base | ~10:45/mile | Seventy-five second base
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Thirty seconds all out
+RECOVERY: 1:15 | Recovery | Walk | Recovery
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Forty-five all out
+RECOVERY: 1:15 | Recovery | Walk | Recovery
+ALL-OUT: 1:00 | All-Out | ~7:45/mile | One minute all out
+RECOVERY: 1:30 | Recovery | Walk | Full recovery
+
+# Block 3 - 7.75 minutes
+PUSH: 1:00 | Push | ~9:15/mile | One minute push buy-in
+BASE: 1:30 | Base | ~10:45/mile | Ninety second base
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Thirty seconds all out
+RECOVERY: 1:30 | Recovery | Walk | Recovery
+ALL-OUT: 0:45 | All-Out | ~7:30/mile | Forty-five all out
+RECOVERY: 1:30 | Recovery | Walk | Recovery
+ALL-OUT: 1:00 | All-Out | ~7:15/mile | Last all out, best effort
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down
