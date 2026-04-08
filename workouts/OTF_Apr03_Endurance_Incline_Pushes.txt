@@ -1,0 +1,33 @@
+# ~28 minutes total
+# OTF 4/3/26 - Endurance Incline Pushes (Friday)
+# Decreasing base intervals between 2-min push efforts at 5%+ incline
+# Goal: Hold push pace as base intervals shrink
+WORKOUT: OTF 4/3 -- Endurance Incline Pushes
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Round 1 - longest base
+BASE: 4:30 | Base | ~10:45/mile | Four and a half minute base
+PUSH: 2:00 | Push 5% | ~10:00/mile | Two minute push at five percent
+
+# Round 2
+BASE: 3:30 | Base | ~10:45/mile | Three and a half minute base
+PUSH: 2:00 | Push 5% | ~10:00/mile | Two minute push at five percent
+
+# Round 3
+BASE: 2:30 | Base | ~10:45/mile | Two and a half minutes
+PUSH: 2:00 | Push 5% | ~10:00/mile | Hold that push pace
+
+# Round 4
+BASE: 1:30 | Base | ~10:45/mile | Ninety second base, getting shorter
+PUSH: 2:00 | Push 5% | ~10:00/mile | Same push effort
+
+# Round 5 - shortest base
+BASE: 0:30 | Base | ~10:45/mile | Thirty second base, almost no rest
+PUSH: 2:00 | Push 5% | ~10:00/mile | Last push, hold it
+
+# Finisher
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Thirty second all out flat
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

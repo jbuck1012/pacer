@@ -1,0 +1,51 @@
+# ~28 minutes total
+# OTF 4/1/26 - ESP Coach's Choice (Wednesday)
+# 23-min tread with random coach cues: endurance (push), strength (incline), power (all-out)
+# Goal: React to the cue and return to original pace quickly
+WORKOUT: OTF 4/1 -- ESP Coach's Choice
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Endurance cue
+PUSH: 1:30 | Push | ~9:15/mile | Endurance cue, push pace
+BASE: 1:00 | Base | ~10:45/mile | Back to base
+
+# Strength cue
+BASE: 1:00 | Base 8% | ~11:30/mile | Strength cue, eight percent incline
+BASE: 1:00 | Base | ~10:45/mile | Back to flat base
+
+# Power cue
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | Power cue, all out
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+
+# Endurance cue
+PUSH: 2:00 | Push | ~9:15/mile | Endurance, two minute push
+BASE: 1:00 | Base | ~10:45/mile | Base
+
+# Strength cue
+BASE: 1:00 | Base 8% | ~11:30/mile | Strength, eight percent
+BASE: 0:30 | Base | ~10:45/mile | Flat
+
+# Power cue
+ALL-OUT: 0:30 | All-Out | ~7:15/mile | Power, all out
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+
+# Endurance cue
+PUSH: 1:30 | Push | ~9:00/mile | Push, faster this time
+BASE: 1:00 | Base | ~10:45/mile | Base
+
+# Strength cue
+BASE: 1:30 | Base 8% | ~11:30/mile | Strength, longer this time
+BASE: 0:30 | Base | ~10:45/mile | Flat
+
+# Power cue
+ALL-OUT: 0:30 | All-Out | ~7:15/mile | Power, all out
+RECOVERY: 1:00 | Recovery | Walk | Recovery
+
+# Final round
+PUSH: 1:30 | Push | ~9:00/mile | Endurance push
+BASE: 1:00 | Base 8% | ~11:30/mile | Strength incline
+ALL-OUT: 1:00 | All-Out | ~7:00/mile | Last minute, power all out
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

@@ -1,0 +1,29 @@
+# ~28 minutes total
+# OTF 4/4/26 - Distance Challenge (Saturday)
+# Five rounds of increasing duration with progressive inclines
+# Goal: Accumulate distance each round, match or beat previous round
+WORKOUT: OTF 4/4 -- Distance Challenge
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Round 1 - 2.5 min flat
+PUSH: 2:30 | Push | ~9:15/mile | Two and a half minutes, run for distance
+RECOVERY: 1:30 | Recovery | Walk | Ninety second recovery, remember distance
+
+# Round 2 - 3 min at 2%
+PUSH: 3:00 | Push 2% | ~9:30/mile | Three minutes at two percent, beat round one
+RECOVERY: 1:30 | Recovery | Walk | Recovery, check distance
+
+# Round 3 - 3.5 min at 3%
+PUSH: 3:30 | Push 3% | ~9:45/mile | Three and a half at three percent
+RECOVERY: 1:30 | Recovery | Walk | Recovery, compare distance
+
+# Round 4 - 4 min at 4%
+PUSH: 4:00 | Push 4% | ~10:00/mile | Four minutes at four percent
+RECOVERY: 1:30 | Recovery | Walk | Recovery, one more round
+
+# Round 5 - 4.5 min at 5%
+PUSH: 4:30 | Push 5% | ~10:15/mile | Four and a half at five percent, last round
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down
