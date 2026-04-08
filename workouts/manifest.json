@@ -1,6 +1,31 @@
 {
   "workouts": [
     {
+      "file": "OTF_Apr01_ESP_Coaches_Choice.txt",
+      "name": "OTF 4/1 -- ESP Coach's Choice",
+      "description": ""
+    },
+    {
+      "file": "OTF_Apr02_Run_Row.txt",
+      "name": "OTF 4/2 -- Run Row",
+      "description": ""
+    },
+    {
+      "file": "OTF_Apr03_Endurance_Incline_Pushes.txt",
+      "name": "OTF 4/3 -- Endurance Incline Pushes",
+      "description": ""
+    },
+    {
+      "file": "OTF_Apr04_Distance_Challenge.txt",
+      "name": "OTF 4/4 -- Distance Challenge",
+      "description": ""
+    },
+    {
+      "file": "OTF_Apr05_Endurance_Progression.txt",
+      "name": "OTF 4/5 -- Endurance Progression",
+      "description": ""
+    },
+    {
       "file": "OTF_Mar10_Incline_Power.txt",
       "name": "OTF 3/10 -- Incline Power",
       "description": ""
@@ -103,6 +128,16 @@
     {
       "file": "OTF_Mar2_ESP_Builds.txt",
       "name": "OTF 3/2 -- ESP Builds",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar30_Power_All_Outs.txt",
+      "name": "OTF 3/30 -- Power All-Outs",
+      "description": ""
+    },
+    {
+      "file": "OTF_Mar31_Power_Day.txt",
+      "name": "OTF 3/31 -- Power Day",
       "description": ""
     },
     {
