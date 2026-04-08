@@ -1,0 +1,39 @@
+# ~26 minutes total
+# OTF 4/2/26 - Run/Row (Thursday)
+# Three 7-min blocks with decreasing run distance and increasing intensity
+# Goal: Maintain tread paces, match or beat row distance each round
+# Row segments converted to recovery for tread-only use
+WORKOUT: OTF 4/2 -- Run Row
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Block 1 - Push pace, 0.2 mile efforts (~2 min each)
+PUSH: 2:00 | Push | ~9:15/mile | Run for distance, point two miles
+REST: 1:00 | Rest | -- | Row twenty strokes
+PUSH: 2:00 | Push | ~9:15/mile | Push again, match distance
+REST: 1:00 | Rest | -- | Row twenty strokes
+PUSH: 1:00 | Push | ~9:15/mile | Last push effort
+
+# Block 2 - Push to all-out, 0.15 mile efforts
+PUSH: 1:00 | Push | ~9:00/mile | Push to all out
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | All out finish
+REST: 1:00 | Rest | -- | Row fifteen strokes
+PUSH: 1:00 | Push | ~9:00/mile | Push to all out again
+ALL-OUT: 0:30 | All-Out | ~7:30/mile | All out
+REST: 1:00 | Rest | -- | Row fifteen strokes
+PUSH: 1:00 | Push | ~9:00/mile | One more push
+ALL-OUT: 0:30 | All-Out | ~7:15/mile | All out
+
+# Block 3 - All-out, 0.1 mile efforts
+ALL-OUT: 0:45 | All-Out | ~7:15/mile | All out, point one miles
+REST: 1:00 | Rest | -- | Row ten strokes
+ALL-OUT: 0:45 | All-Out | ~7:00/mile | All out, beat your distance
+REST: 1:00 | Rest | -- | Row ten strokes
+ALL-OUT: 0:45 | All-Out | ~7:00/mile | All out, last effort
+REST: 1:00 | Rest | -- | Row ten strokes
+
+# Finisher
+ALL-OUT: 0:30 | All-Out | ~6:45/mile | Thirty second all out finisher
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down

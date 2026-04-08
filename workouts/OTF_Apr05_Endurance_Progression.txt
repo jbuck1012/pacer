@@ -1,0 +1,20 @@
+# ~15 minutes total
+# OTF 4/5/26 - Endurance Progression (Sunday)
+# Increasing push durations with short base recoveries
+# Goal: Lower base pace as needed to maintain push pace each round
+WORKOUT: OTF 4/5 -- Endurance Progression
+THRESHOLD: 9:30/mile
+
+WARMUP: 3:00 | Easy | ~12:00/mile | Easy warmup
+
+# Tread block - progressive pushes
+BASE: 0:45 | Base | ~10:45/mile | Forty-five second base
+PUSH: 1:00 | Push | ~9:15/mile | One minute push
+BASE: 0:45 | Base | ~10:45/mile | Base
+PUSH: 1:30 | Push | ~9:15/mile | Ninety second push
+BASE: 0:45 | Base | ~10:45/mile | Base
+PUSH: 2:00 | Push | ~9:15/mile | Two minute push, maintain pace
+BASE: 0:45 | Base | ~10:45/mile | Base
+PUSH: 2:30 | Push | ~9:15/mile | Two and a half minutes, longest push
+
+COOLDOWN: 2:00 | Easy | ~12:30/mile | Cool down
